@@ -1,0 +1,14 @@
+DASHBOARD VUNG KEN V6.7 RC - CLEAN FIXED BUILD
+
+1) Chay RUN_DASHBOARD.bat
+2) Mo http://localhost:8000/index.html?v=67
+3) Test Campaign Impact:
+   - data/campaign_config.csv: ten CT, ngay bat dau/ket thuc, status
+   - data/campaign_kpi.csv: KPI dong; phai luu UTF-8
+   - Dashboard chi hien thi coverage + KPI + muc do phan hoa, khong danh gia tot/xau
+4) Test Weather:
+   - UPDATE_WEATHER.bat de cap nhat du bao
+   - data/traffic_profile.csv cap nhat monthly/quarterly
+
+Daily: chi doi KEY_DRIVERS_STORE.csv + KEY_DRIVERS_CGTV.csv
+Monthly: doi campaign_config.csv + campaign_kpi.csv + traffic_profile.csv

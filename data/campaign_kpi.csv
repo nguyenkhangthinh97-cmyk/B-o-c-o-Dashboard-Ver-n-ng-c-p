@@ -1,0 +1,5 @@
+level,campaign_id,kpi_code,kpi_name,format,aggregate,note
+STORE,TOP1,%Khách YD Top1 0 đồng,% Khách nhận quà TOP1,percent,avg,kpi_code phải trùng header trong KEY_DRIVERS_STORE.csv
+STORE,TOP1,%Đơn có VC YDTop1,% Đơn có Voucher TOP1,percent,avg,kpi_code phải trùng header trong KEY_DRIVERS_STORE.csv
+CGTV,TOP1,%Khách YD Top1 0 đồng,% Khách nhận quà TOP1,percent,avg,kpi_code phải trùng header trong KEY_DRIVERS_CGTV.csv
+CGTV,TOP1,%Đơn có VC YDTop1,% Đơn có Voucher TOP1,percent,avg,kpi_code phải trùng header trong KEY_DRIVERS_CGTV.csv

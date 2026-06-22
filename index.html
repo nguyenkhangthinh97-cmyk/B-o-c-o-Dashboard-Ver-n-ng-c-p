@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dashboard Vùng Ken V6.7 RC · Campaign Impact + Weather Intelligence V2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#0B4D96;--blue2:#06376E;--blue3:#EAF4FF;--yellow:#FFD21E;--bg:#F4F8FD;--card:#fff;--text:#122033;--muted:#64748B;--line:#D9E6F5;--green:#15803D;--green-bg:#EAF7EF;--green-line:#A7DDBB;--amber:#B56A00;--amber-bg:#FFF5DE;--amber-line:#FFD58D;--red:#C62828;--red-bg:#FFF0F0;--red-line:#FFB5B5;--soft:#F8FBFF;--shadow:0 12px 30px rgba(7,55,110,.10);--shadow2:0 8px 18px rgba(7,55,110,.08);--radius:22px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#FFF7CA 0,#F4F8FD 245px,#F4F8FD 100%);font-family:"Be Vietnam Pro",Arial,sans-serif;color:var(--text);font-size:15px;line-height:1.55}.app{max-width:1820px;margin:auto;padding:24px}.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#FFD21E 0%,#FFF3A4 56%,#FFF 100%);border:1px solid #EBC400;border-radius:32px;padding:26px 30px;box-shadow:var(--shadow);margin-bottom:16px}.hero:after{content:"";position:absolute;right:-90px;top:-100px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.65)}.hero>*{position:relative;z-index:1}.brand-line{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.badge{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:800;background:var(--blue);color:#fff}.badge.light{background:#fff;color:var(--blue2);border:1px solid #E8C300}.hero h1{margin:0;font-size:38px;letter-spacing:-.55px;line-height:1.1;color:var(--blue2);font-weight:800}.hero p{max-width:1220px;margin:10px 0 0;color:#34465D}.controls{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}.btn,.select{height:44px;border-radius:14px;border:1px solid #BCD0E7;background:#fff;color:var(--blue2);font-weight:800;padding:0 15px;box-shadow:0 3px 7px rgba(7,55,110,.04)}.btn{cursor:pointer}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow2)}.data-warning{display:none;margin-top:14px;padding:14px 16px;border-radius:16px;background:var(--red-bg);border:1px solid var(--red-line);color:#8B1515;font-weight:700}.tabs{position:sticky;top:0;z-index:20;margin:18px 0;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:22px;padding:10px;display:flex;gap:9px;overflow:auto;box-shadow:var(--shadow);align-items:center}.tab-group-label{white-space:nowrap;color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:800;letter-spacing:.08em;padding:0 6px}.tab-btn{white-space:nowrap;border:1px solid var(--line);background:#fff;color:var(--blue2);border-radius:15px;padding:11px 15px;font-weight:800;cursor:pointer;transition:.15s}.tab-btn.priority{background:linear-gradient(135deg,var(--blue),#1668bd);color:#fff;border-color:var(--blue);box-shadow:0 5px 14px rgba(11,77,150,.18)}.tab-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}.tab-btn.priority.active{outline:3px solid rgba(255,210,30,.65)}.tab-btn:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(11,77,150,.12)}.tab{display:none}.tab.active{display:block}.section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:8px 0 16px}.section-title h2{font-size:29px;margin:0;color:var(--blue2);font-weight:800;letter-spacing:-.35px}.section-title .hint{color:var(--muted);font-weight:700}.grid{display:grid;gap:18px}.kpi-grid{grid-template-columns:repeat(4,1fr)}.two{grid-template-columns:1fr 1fr}.three{grid-template-columns:repeat(3,1fr)}.four{grid-template-columns:repeat(4,1fr)}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-bottom:18px}.card h3{font-size:20px;line-height:1.2;margin:0 0 13px;color:var(--blue2);font-weight:800}.card-sub,.mini{color:var(--muted);font-size:13px}.tiny{font-size:12px;color:var(--muted)}.executive-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 18px}.strip-item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;box-shadow:0 8px 18px rgba(7,55,110,.06)}.strip-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}.strip-value{font-family:"IBM Plex Sans",Arial,sans-serif;font-size:24px;font-weight:700;color:var(--blue2);margin-top:4px}.daily-brief{background:#fff;border:2px solid var(--blue);border-radius:26px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:18px}.daily-brief h3{margin:0 0 12px;color:var(--blue2);font-size:23px}.brief-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.brief-list{display:grid;gap:10px}.brief-item{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;background:var(--soft);border:1px solid #DCE9F7;border-radius:16px;padding:12px}.brief-rank{width:36px;height:36px;border-radius:999px;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--blue2)}.priority-level{display:inline-flex;border-radius:999px;padding:6px 10px;font-weight:800;font-size:12px}.priority-level.high{background:var(--red-bg);color:#8E1616;border:1px solid var(--red-line)}.priority-level.mid{background:var(--amber-bg);color:#8A5200;border:1px solid var(--amber-line)}.priority-level.low{background:var(--blue3);color:var(--blue2);border:1px solid #B8D6F4}.kpi-card{background:white;border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--shadow);border-top:7px solid var(--blue);min-height:122px}.kpi-card.top{border-top-color:var(--green)}.kpi-card.watch{border-top-color:var(--amber)}.kpi-card.alarm{border-top-color:var(--red)}.kpi-card.neutral{border-top-color:var(--blue)}.kpi-label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:800}.kpi-value{font-family:"IBM Plex Sans",Arial,sans-serif;font-variant-numeric:tabular-nums;font-size:36px;font-weight:700;color:var(--blue2);line-height:1.08;margin:8px 0}.kpi-sub{font-size:13px;color:#4B5D73}.status{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:7px 11px;font-weight:800;font-size:12px;white-space:nowrap}.status.top{background:var(--green-bg);color:#0F6630;border:1px solid var(--green-line)}.status.watch{background:var(--amber-bg);color:#8A5200;border:1px solid var(--amber-line)}.status.alarm{background:var(--red-bg);color:#8E1616;border:1px solid var(--red-line)}.status.neutral{background:var(--blue3);color:var(--blue2);border:1px solid #B8D6F4}.metric{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;padding:7px 10px;font-family:"IBM Plex Sans",Arial,sans-serif;font-variant-numeric:tabular-nums;font-weight:700;min-width:76px;line-height:1.1;border:1px solid transparent}.metric.top{background:var(--green-bg);color:#0F6630;border-color:var(--green-line)}.metric.watch{background:var(--amber-bg);color:#8A5200;border-color:var(--amber-line)}.metric.alarm{background:var(--red-bg);color:#8E1616;border-color:var(--red-line)}.metric.neutral{background:var(--blue3);color:var(--blue2);border-color:#B8D6F4}.summary-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:18px}.summary-box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 8px 16px rgba(7,55,110,.06)}.summary-box .label{font-size:13px;color:var(--blue2);font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px}.summary-box ul{margin:0;padding-left:18px}.summary-box li{margin:6px 0}.callout{border-left:6px solid var(--blue);background:#F8FBFF;border-radius:18px;padding:14px 16px;margin:10px 0}.callout.good{border-left-color:var(--green);background:#F3FFF6}.callout.warn{border-left-color:var(--amber);background:#FFFAEF}.callout.bad{border-left-color:var(--red);background:#FFF7F7}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:#fff}table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;min-width:1150px}th,td{padding:14px 13px;border-bottom:1px solid #E7EFF8;text-align:left;vertical-align:middle;font-size:14px}th{position:sticky;top:0;background:#EFF7FF;color:var(--blue2);font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:800;z-index:1}tbody tr{cursor:pointer}tbody tr:hover{background:#FAFCFF}.store-col{min-width:250px;font-weight:800;color:var(--blue2);line-height:1.25}.action-col{min-width:320px}.num{font-family:"IBM Plex Sans",Arial,sans-serif;font-variant-numeric:tabular-nums;text-align:right;font-weight:600}.pill-row{display:flex;gap:8px;flex-wrap:wrap}.detail-panel{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}.detail-box{background:var(--soft);border:1px solid #DCE9F7;border-radius:18px;padding:15px}.detail-box b{color:var(--blue2)}.select-line{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.footer{text-align:center;color:var(--muted);font-size:12px;margin:24px 0}.empty{color:var(--muted);padding:12px}.theme-strip{height:8px;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--yellow),var(--green));margin-top:16px;opacity:.85}.toggle-row{display:flex;gap:10px;align-items:center;margin-bottom:12px}.toggle-note{font-size:12px;color:var(--muted)}
+@media(max-width:1280px){.kpi-grid,.two,.three,.four,.summary-grid,.detail-panel,.executive-strip,.brief-grid{grid-template-columns:1fr}.hero h1{font-size:31px}.app{padding:14px}}
+@media print{.tabs,.controls{display:none}.tab{display:block;page-break-after:always}.app{max-width:none}.card,.kpi-card,.summary-box,.daily-brief,.strip-item{box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<section class="hero">
+  <div class="brand-line"><span class="badge">YODY · VÙNG KEN</span><span class="badge light">V6.7 RC · Campaign Impact + Weather Intelligence V2</span><span class="badge" id="dataStatus">Đang đọc dữ liệu...</span></div>
+  <h1>Báo cáo hiệu quả kinh doanh Vùng Ken</h1>
+  <p><b>Facts First → Root Cause → Impact → Action.</b> Priority Board là trung tâm điều hành. Dashboard không chấm điểm. Weather là lớp rủi ro vận hành: hiển thị theo cửa hàng, theo ngày/giờ, không tự đổi màu KPI core.</p>
+  <div class="controls"><select id="storeFilter" class="select"><option value="ALL">Toàn vùng</option></select><button class="btn primary" onclick="loadAll()">↻ Cập nhật dữ liệu</button><button class="btn" onclick="window.print()">In / Xuất PDF</button></div>
+  <div id="dataWarning" class="data-warning"></div><div class="theme-strip"></div>
+</section>
+<nav class="tabs" id="tabs"></nav>
+<main>
+<div id="executiveStrip" class="executive-strip"></div>
+<section class="tab active" id="tab-priority"><div class="section-title"><h2>1. Priority Board</h2><div class="hint">OM mở tab này đầu tiên mỗi sáng</div></div><div id="dailyBrief" class="daily-brief"></div><div class="card"><h3>Bảng ưu tiên điều hành</h3><div class="table-wrap"><table id="priorityTable"></table></div></div><div id="prioritySummary" class="summary-grid"></div></section>
+<section class="tab" id="tab-exec"><div class="section-title"><h2>2. Executive Dashboard</h2><div class="hint">KPI → Weather Alert → bảng đối soát → nhận xét</div></div><div id="kpis" class="grid kpi-grid"></div><div class="card"><h3>Weather Alert Today</h3><div id="weatherToday" class="grid three"></div></div><div class="card"><h3>Bảng đối soát vùng</h3><div class="table-wrap"><table id="execTable"></table></div></div><div class="grid two"><div class="card"><h3>TOP 3 nổi bật</h3><div id="topAlerts"></div></div><div class="card"><h3>ƯU TIÊN HÀNH ĐỘNG</h3><div id="alarmAlerts"></div></div></div><div id="execSummary" class="summary-grid"></div></section>
+<section class="tab" id="tab-store"><div class="section-title"><h2>3. Hiệu quả cửa hàng</h2><div class="hint">Bảng trước, chi tiết khi chọn cửa hàng</div></div><div class="card"><h3>Store Ranking theo nhóm thị trường</h3><div class="table-wrap"><table id="storeTable"></table></div></div><div id="storeSummary" class="summary-grid"></div><div class="card"><h3>Store Detail</h3><div class="select-line"><span class="mini">Chọn cửa hàng:</span><select id="detailStore" class="select"></select></div><div id="storeDetail"></div></div></section>
+<section class="tab" id="tab-growth"><div class="section-title"><h2>4. Tăng trưởng & nguyên nhân gốc</h2><div class="hint">WoW · MoM · LFL · Driver chính</div></div><div class="card"><h3>Bảng Growth</h3><div class="table-wrap"><table id="growthTable"></table></div></div><div id="growthSummary" class="summary-grid"></div><div class="grid three" id="growthCards"></div></section>
+<section class="tab" id="tab-quality"><div class="section-title"><h2>5. Sales Quality</h2><div class="hint">UPT · AOV · 6 Group · phụ kiện</div></div><div class="card"><h3>Bảng Sales Quality</h3><div class="table-wrap"><table id="qualityTable"></table></div></div><div id="qualitySummary" class="summary-grid"></div><div class="grid three" id="qualityCards"></div></section>
+<section class="tab" id="tab-cgtv"><div class="section-title"><h2>6. CGTV</h2><div class="hint">Ranking bằng chỉ số thực tế, không hiển thị điểm</div></div><div class="card"><h3>Bảng Ranking CGTV</h3><div class="table-wrap"><table id="cgtvTable"></table></div></div><div id="cgtvSummary" class="summary-grid"></div><div class="grid three" id="cgtvCards"></div></section>
+<section class="tab" id="tab-campaign"><div class="section-title"><h2>7. Campaign Impact</h2><div class="hint">Theo dõi KPI động của chương trình · Khách quan, không xếp loại hiệu quả</div></div><div id="campaignStatus" class="card"></div><div id="campaignOverview" class="grid kpi-grid"></div><div class="card"><h3>Campaign KPI · Tầng cửa hàng</h3><div class="table-wrap"><table id="campaignKpiTable"></table></div><div class="toggle-note">Bảng đối soát KPI động theo cửa hàng. Dashboard chỉ hiển thị dữ liệu, không kết luận tốt/chưa tốt.</div></div><div class="card"><h3>Campaign KPI · Tầng CGTV</h3><div class="table-wrap"><table id="campaignBeforeAfterTable"></table></div><div class="toggle-note">KPI động đọc theo level=CGTV trong campaign_kpi.csv và header trong KEY_DRIVERS_CGTV.csv.</div></div><div id="campaignSummary" class="summary-grid"></div></section>
+<section class="tab" id="tab-risk"><div class="section-title"><h2>8. Risk & Forecast</h2><div class="hint">Business Risk · Weather Risk · Forecast</div></div><div class="card"><h3>Bảng Risk</h3><div class="table-wrap"><table id="riskTable"></table></div></div><div id="riskSummary" class="summary-grid"></div><div class="grid three" id="forecastCards"></div><div class="card"><h3>Weather Scorecard</h3><div id="weatherUpdated" class="mini"></div><div id="weatherBox" class="grid three"></div></div></section>
+<section class="tab" id="tab-action"><div class="section-title"><h2>9. Action Center</h2><div class="hint">Nơi duy nhất chứa hành động chi tiết</div></div><div class="card"><h3>Top 3 Impact Actions</h3><div class="table-wrap"><table id="actionTable"></table></div><div class="toggle-note">Mặc định hiển thị 3 hành động có Impact cao nhất để OM không bị quá tải.</div></div><div id="actionSummary" class="summary-grid"></div></section>
+<section class="tab" id="tab-om"><div class="section-title"><h2>10. OM Action Plan</h2><div class="hint">Kế hoạch can thiệp của OM theo 7 ngày</div></div><div class="card"><h3>Kế hoạch hành động OM</h3><div class="table-wrap"><table id="omPlanTable"></table></div></div><div id="omPlanSummary" class="summary-grid"></div></section>
+</main>
+<div class="footer">Dashboard Vùng Ken V6.7 RC · Campaign Impact + Weather Intelligence V2 · V6.6 core logic unchanged.</div>
+</div>
+<script>
+const TABS=[['GROUP','Điều hành hằng ngày'],['tab-priority','🎯 Priority Board','priority'],['tab-exec','📊 Tổng quan'],['tab-action','🚀 Action Center'],['tab-om','🧭 OM Action Plan'],['GROUP','Phân tích'],['tab-store','🏪 Hiệu quả CH'],['tab-growth','📈 Tăng trưởng'],['tab-quality','⭐ Sales Quality'],['tab-cgtv','👨‍💼 CGTV'],['tab-campaign','🎁 Campaign Impact'],['tab-risk','⚠️ Risk & Forecast']];
+let storeData=[],cgtvData=[],weatherData=null,analysisRows=[];
+let campaignConfig=[],campaignKpi=[],campaignData=[];
+const STORE_INFO={'YODY LONG XUYÊN':{size:'M',tier:'Base',market:'A · Thành phố trung tâm',owner:'Tuấn'},'YODY 30 - 4 CẦN THƠ':{size:'S',tier:'Star ⭐',market:'A · Thành phố trung tâm',owner:'Toàn'},'YODY CẦN THƠ 3':{size:'S',tier:'Base',market:'A · Thành phố trung tâm',owner:'Châu Linh'},'YODY SÓC TRĂNG':{size:'S',tier:'Base',market:'B · Thành phố vệ tinh',owner:'Linh'},'YODY LONG XUYÊN 2':{size:'Mini',tier:'Star ⭐',market:'B · Thành phố vệ tinh',owner:'Duyên'},'YODY BẠC LIÊU':{size:'Mini',tier:'Base',market:'C · Huyện / thị xã',owner:'Hà'},'YODY RẠCH SỎI - KIÊN GIANG':{size:'Mini',tier:'Base',market:'C · Huyện / thị xã',owner:'Nam'},'YODY NGÃ BẢY':{size:'Supermini',tier:'Star ⭐',market:'C · Huyện / thị xã',owner:'Quân'}};
+
+
+const STORE_COORDS={
+ 'YODY LONG XUYÊN':{lat:10.3864,lon:105.4352,city:'Long Xuyên'},
+ 'YODY LONG XUYÊN 2':{lat:10.3864,lon:105.4352,city:'Long Xuyên'},
+ 'YODY 30 - 4 CẦN THƠ':{lat:10.0452,lon:105.7469,city:'Cần Thơ'},
+ 'YODY CẦN THƠ 3':{lat:10.0452,lon:105.7469,city:'Cần Thơ'},
+ 'YODY SÓC TRĂNG':{lat:9.6036,lon:105.9739,city:'Sóc Trăng'},
+ 'YODY BẠC LIÊU':{lat:9.2940,lon:105.7216,city:'Bạc Liêu'},
+ 'YODY RẠCH SỎI - KIÊN GIANG':{lat:9.9633,lon:105.1119,city:'Rạch Sỏi / Kiên Giang'},
+ 'YODY NGÃ BẢY':{lat:9.8167,lon:105.8167,city:'Ngã Bảy / Hậu Giang'}
+};
+function initTabs(){tabs.innerHTML=TABS.map((t,i)=>t[0]==='GROUP'?`<span class="tab-group-label">${t[1]}</span>`:`<button class="tab-btn ${t[2]||''} ${t[0]==='tab-priority'?'active':''}" onclick="showTab('${t[0]}',this)">${t[1]}</button>`).join('')}
+function showTab(id,btn){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}
+function parseSmartNumber(v){if(v==null)return 0;if(typeof v==='number')return isFinite(v)?v:0;let s=String(v).replace(/\uFEFF/g,'').replace(/^"|"$/g,'').trim();if(!s||s==='null'||s==='-'||s==='N/A')return 0;let isPct=s.includes('%');s=s.replace(/%/g,'').replace(/\s/g,'');let neg=false;if(/^\(.*\)$/.test(s)){neg=true;s=s.slice(1,-1)}let lastComma=s.lastIndexOf(','),lastDot=s.lastIndexOf('.');if(lastComma>-1&&lastDot>-1){if(lastComma>lastDot){s=s.replace(/\./g,'').replace(/,/g,'.')}else{s=s.replace(/,/g,'')}}else if(lastComma>-1){let p=s.split(',');if(p.length>1&&p[p.length-1].length===3&&p.slice(0,-1).every(x=>x.length<=3))s=p.join('');else s=s.replace(/,/g,'.')}else if(lastDot>-1){let p=s.split('.');if(p.length>1&&p[p.length-1].length===3&&p.slice(0,-1).every(x=>x.length<=3))s=p.join('')}let n=parseFloat(s);if(isNaN(n))return 0;if(neg)n=-n;if(isPct)n=n/100;return n}
+const num=parseSmartNumber;function rate(v){let n=num(v);if(n>1&&n<=100)n=n/100;if(n>100)n=n/10000;return n}function fmtMoney(v){let n=num(v);if(Math.abs(n)>=1e9)return (n/1e9).toFixed(2)+' tỷ';if(Math.abs(n)>=1e6)return (n/1e6).toFixed(1)+'tr';if(Math.abs(n)>=1000)return Math.round(n/1000)+'k';return Math.round(n).toLocaleString('vi-VN')}function toK(v){return Math.round(num(v)/1000)+'k'}function pp(v){return (rate(v)*100).toFixed(1)+'%'}function safeText(x){return String(x||'').replace(/[&<>]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[s]))}
+function detectDelimiter(line){let c=(line.match(/,/g)||[]).length,s=(line.match(/;/g)||[]).length;return s>c?';':','}function findHeaderLine(lines){for(let i=0;i<lines.length;i++){let l=String(lines[i]||'').replace(/^\uFEFF/,'').trim();if(/^"?\s*(CỬA HÀNG|Tên nhân viên)\s*[,;]/i.test(l))return i;if((l.includes('CỬA HÀNG')&&l.includes('Doanh thu')&&l.includes('AOV'))||(l.includes('Tên nhân viên')&&l.includes('Doanh thu')&&l.includes('Số đơn')))return i}return -1}
+function parseCSV(text){text=String(text||'').replace(/^\uFEFF/,'');let lines=text.split(/\r?\n/),start=findHeaderLine(lines);if(start<0)throw Error('Không tìm thấy header thật của BI');let delimiter=detectDelimiter(lines[start]);let csv=lines.slice(start).join('\n'),rows=[],row=[],cell='',q=false;for(let i=0;i<csv.length;i++){let c=csv[i],n=csv[i+1];if(c==='"'&&q&&n==='"'){cell+='"';i++}else if(c==='"'){q=!q}else if(c===delimiter&&!q){row.push(cell);cell=''}else if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(cell);if(row.some(x=>String(x).trim()))rows.push(row);row=[];cell=''}else cell+=c}row.push(cell);if(row.some(x=>String(x).trim()))rows.push(row);let head=(rows.shift()||[]).map(h=>String(h||'').replace(/^\uFEFF/,'').trim());return rows.map(r=>Object.fromEntries(head.map((h,i)=>[h,(r[i]??'').trim()]))).filter(o=>Object.values(o).some(v=>String(v).trim()))}
+async function readCSV(path){let r=await fetch(path+'?v='+Date.now());if(!r.ok)throw Error('Không đọc được '+path);return parseCSV(await r.text())}
+function parseCSVLoose(text){text=String(text||'').replace(/^\uFEFF/,'');let lines=text.split(/\r?\n/).filter(x=>String(x).trim());if(!lines.length)return [];let delimiter=detectDelimiter(lines[0]);let csv=lines.join('\n'),rows=[],row=[],cell='',q=false;for(let i=0;i<csv.length;i++){let c=csv[i],n=csv[i+1];if(c==='"'&&q&&n==='"'){cell+='"';i++}else if(c==='"'){q=!q}else if(c===delimiter&&!q){row.push(cell);cell=''}else if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(cell);rows.push(row);row=[];cell=''}else cell+=c}row.push(cell);rows.push(row);let headers=(rows.shift()||[]).map(h=>String(h||'').replace(/^\uFEFF/,'').trim());return rows.filter(r=>r.some(c=>String(c||'').trim())).map(r=>Object.fromEntries(headers.map((h,i)=>[h,String(r[i]||'').trim()]))) }
+async function optionalReadCSV(path){try{let r=await fetch(path+'?v='+Date.now());if(!r.ok)return [];return parseCSVLoose(await r.text())}catch(e){return []}}
+function sum(arr,k){return arr.reduce((s,r)=>s+num(r[k]),0)}function avg(arr,k){return arr.length?arr.reduce((s,r)=>s+num(r[k]),0)/arr.length:0}function infoOf(name){return STORE_INFO[name]||{size:'-',tier:'-',market:'-',owner:'-'}}function ownerOf(r){return infoOf(r['CỬA HÀNG']||r['CH']).owner}
+function statusBadge(st){return `<span class="status ${st.key}">${st.txt}</span>`}function metricClass(n,good,warn,invert=false){return invert?(n<=good?'top':n<=warn?'watch':'alarm'):(n>=good?'top':n>=warn?'watch':'alarm')}function metric(v,good,warn,fmt,invert=false){let n=typeof v==='number'?v:num(v),key=metricClass(n,good,warn,invert);return `<span class="metric ${key}">${fmt?fmt(n):n.toFixed(1)}</span>`}function pctMetric(v,good,warn,invert=false){let n=rate(v),key=metricClass(n,good,warn,invert);return `<span class="metric ${key}">${(n*100).toFixed(1)}%</span>`}function moneyMetric(v,good,warn){return metric(num(v),good,warn,n=>fmtMoney(n))}
+function buildBenchmarks(data){let bySize={};data.forEach(r=>{let s=infoOf(r['CỬA HÀNG']).size;(bySize[s] ||= []).push(r)});let bm={};Object.keys(bySize).forEach(s=>{let a=bySize[s];bm[s]={traffic:avg(a,'PSD Traffic AI'),cvr:avg(a,'CVR AI'),aov:avg(a,'AOV bán Off'),upt:avg(a,'UPT'),dtTraffic:avg(a,'DT/Traffic'),ht:avg(a,'%HT DT tháng')}});return bm}
+function sizeRanks(data){let m={},groups={};data.forEach(r=>{let s=infoOf(r['CỬA HÀNG']).size;(groups[s] ||= []).push(r)});Object.keys(groups).forEach(s=>groups[s].sort((a,b)=>rate(b['%HT DT tháng'])-rate(a['%HT DT tháng'])).forEach((r,i)=>m[r['CỬA HÀNG']]=`${s} #${i+1}`));return m}
+
+function weatherRiskFromDaily(daily){
+  let pops=(daily.precipitation_probability_max||[]).map(x=>Number(x)||0);
+  let sums=(daily.precipitation_sum||[]).map(x=>Number(x)||0);
+  let maxPop=Math.max(0,...pops);
+  let rainDays=pops.filter((p,i)=>p>=50 || (sums[i]||0)>=2).length;
+  let heavyDays=pops.filter((p,i)=>p>=75 || (sums[i]||0)>=8).length;
+  let risk='Thấp';
+  if(maxPop>=75 || rainDays>=4 || heavyDays>=2) risk='Cao';
+  else if(maxPop>=45 || rainDays>=2) risk='Trung bình';
+  let opportunity=(maxPop<=35 && rainDays<=1)?'Cơ hội kéo walk-in / hoạt động trước cửa hàng':'Không nổi bật';
+  let summary=risk==='Cao'
+    ? `Mưa cao ${rainDays}/7 ngày, POP tối đa ${maxPop}%. Ưu tiên khách cũ/Zalo, hẹn khách trước giờ mưa.`
+    : risk==='Trung bình'
+      ? `Mưa rải rác ${rainDays}/7 ngày, POP tối đa ${maxPop}%. Theo dõi khung giờ mưa để điều chỉnh kéo khách.`
+      : `Thời tiết thuận lợi, POP tối đa ${maxPop}%. Có thể đẩy kéo walk-in/local activation.`;
+  return {risk,summary,rain_days:rainDays,max_pop:maxPop,opportunity};
+}
+function fetchWithTimeout(resource, options={}, timeout=2500){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(), timeout);
+  return fetch(resource,{...options,signal:controller.signal}).finally(()=>clearTimeout(timer));
+}
+async function fetchOpenMeteoWeather(){
+  let stores=Object.entries(STORE_COORDS);
+  let results=[];
+  await Promise.all(stores.map(async ([store,c])=>{
+    let url=`https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}&daily=weather_code,precipitation_sum,precipitation_probability_max&timezone=Asia%2FBangkok&forecast_days=7`;
+    let res=await fetchWithTimeout(url,{cache:'no-store'},2500);
+    if(!res.ok) throw new Error('Open-Meteo lỗi '+res.status);
+    let j=await res.json();
+    let w=weatherRiskFromDaily(j.daily||{});
+    results.push({store,risk:w.risk,summary:w.summary,rain_days:w.rain_days,max_pop:w.max_pop,opportunity:w.opportunity,city:c.city,source:'Open-Meteo',daily:j.daily});
+  }));
+  results.sort((a,b)=>Object.keys(STORE_COORDS).indexOf(a.store)-Object.keys(STORE_COORDS).indexOf(b.store));
+  return {updated_at:new Date().toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}),source:'Open-Meteo API · Auto via GitHub Pages',mode:'auto',stores:results};
+}
+async function loadWeatherData(){
+  try{return await fetchOpenMeteoWeather()}catch(apiErr){
+    console.warn('Auto weather failed, fallback local json',apiErr);
+    try{return await (await fetch('./data/weather_forecast.json?v='+Date.now())).json()}catch(localErr){return null}
+  }
+}
+function weatherMap(){let m={};if(weatherData&&Array.isArray(weatherData.stores)){weatherData.stores.forEach(w=>m[String(w.store||'').trim().toUpperCase()]=w)}return m}function weatherOf(name){let w=weatherMap()[String(name||'').trim().toUpperCase()];return w||{risk:'Chưa có',summary:'Chưa cập nhật weather_forecast.json',rain_days:0,max_pop:0}}function weatherKey(w){return w.risk==='Cao'?'alarm':w.risk==='Trung bình'?'watch':w.risk==='Thấp'?'top':'neutral'}function weatherAction(root,w){if(root!=='Traffic')return actionForRoot(root);if(w.risk==='Cao')return 'Ngày mưa: gọi khách cũ, Zalo/Facebook địa phương, hẹn khách trước giờ mưa, chốt đơn từ xa.';if(w.risk==='Trung bình')return 'Mưa rải rác: hẹn khách vào khung ít mưa, kết hợp Zalo và kéo walk-in.';if(w.risk==='Thấp')return 'Thời tiết thuận lợi: tăng kéo walk-in, phát voucher địa phương, hoạt động trước cửa hàng.';return 'Chưa có dữ liệu thời tiết: theo dõi Traffic theo giờ và dùng kịch bản kéo khách chủ động.'}function weatherAdjustedNote(r,root,w){if(root!=='Traffic')return 'Không phải root Traffic';if(w.risk==='Cao')return 'Traffic yếu có thể chịu ảnh hưởng thời tiết';if(w.risk==='Thấp')return 'Traffic yếu không do thời tiết rõ ràng';if(w.risk==='Trung bình')return 'Traffic cần theo dõi theo khung giờ mưa';return 'Thiếu dữ liệu weather'}
+function bottlenecks(r,bm){let inf=infoOf(r['CỬA HÀNG']),b=bm[inf.size]||{},items=[];let checks=[['Traffic',num(r['PSD Traffic AI']),b.traffic||0,'PSD Traffic thấp hơn chuẩn nhóm'],['CVR',rate(r['CVR AI']),rate(b.cvr||0),'CVR thấp hơn chuẩn nhóm'],['AOV',num(r['AOV bán Off']),b.aov||0,'AOV thấp hơn chuẩn nhóm'],['UPT',num(r['UPT']),b.upt||0,'UPT thấp hơn chuẩn nhóm'],['DT/Traffic',num(r['DT/Traffic']),b.dtTraffic||0,'DT/Traffic thấp hơn chuẩn nhóm']];checks.forEach(([name,actual,bench,note])=>{if(bench>0&&actual<bench*.95){items.push({name,actual,bench,gap:(bench-actual)/bench,note})}});if(rate(r['%HT DT tháng'])<.75&&!items.find(x=>x.name==='Doanh thu'))items.unshift({name:'Doanh thu',actual:rate(r['%HT DT tháng']),bench:.75,gap:.75-rate(r['%HT DT tháng']),note:'%HT doanh thu thấp'});return items.sort((a,b)=>b.gap-a.gap)}
+function mainRoot(r,bm){let b=bottlenecks(r,bm).filter(x=>x.name!=='Doanh thu');if(b.length)return b[0].name;let ht=rate(r['%HT DT tháng']);if(ht<.75){let s=infoOf(r['CỬA HÀNG']).size,bench=bm[s]||{};let fallback=[['Traffic',num(r['PSD Traffic AI']),bench.traffic||0],['CVR',rate(r['CVR AI']),rate(bench.cvr||0)],['AOV',num(r['AOV bán Off']),bench.aov||0],['DT/Traffic',num(r['DT/Traffic']),bench.dtTraffic||0],['UPT',num(r['UPT']),bench.upt||0]].map(x=>({name:x[0],gap:x[2]>0?(x[2]-x[1])/x[2]:0})).sort((a,b)=>b.gap-a.gap);return fallback[0]?.gap>0?fallback[0].name:'Traffic'}return 'Duy trì'}
+function storeStatus(r,bm){let b=bottlenecks(r,bm).filter(x=>x.name!=='Doanh thu'),ht=rate(r['%HT DT tháng']);if(ht>=.90&&b.length<=1)return {key:'top',txt:'⭐ DẪN ĐẦU'};if(ht>=.75&&b.length<=2)return {key:'top',txt:'🟢 ĐÚNG HƯỚNG'};if(ht>=.55)return {key:'watch',txt:'🟡 ƯU TIÊN CẢI THIỆN'};return {key:'alarm',txt:'🔴 ƯU TIÊN HÀNH ĐỘNG'}}
+function targetForRoot(r,root,bm){let s=infoOf(r['CỬA HÀNG']).size,b=bm[s]||{};if(root==='Traffic')return `${num(r['PSD Traffic AI']).toFixed(0)} → ${Math.ceil(Math.max(num(r['PSD Traffic AI'])*1.08,b.traffic||0))} khách/ngày`;if(root==='CVR')return `${pp(r['CVR AI'])} → ${pp(Math.max(rate(r['CVR AI'])*1.05,rate(b.cvr||0)))}`;if(root==='AOV')return `${toK(r['AOV bán Off'])} → ${toK(Math.max(num(r['AOV bán Off'])*1.05,b.aov||0))}`;if(root==='UPT')return `${num(r['UPT']).toFixed(2)} → ${Math.max(num(r['UPT'])+.15,b.upt||0).toFixed(2)}`;if(root==='DT/Traffic')return `${toK(r['DT/Traffic'])} → ${toK(Math.max(num(r['DT/Traffic'])*1.06,b.dtTraffic||0))}`;return 'Duy trì chuẩn hiện tại'}
+function impactNumber(r,root,bm){let s=infoOf(r['CỬA HÀNG']).size,b=bm[s]||{},days=30,aov=num(r['AOV bán Off']),traffic=num(r['PSD Traffic AI']),cvr=rate(r['CVR AI']),orders=num(r['Số đơn']),gap=Math.max(num(r['Target DT Tháng'])-num(r['Doanh thu']),0);let impact=0;if(root==='Traffic')impact=Math.max((b.traffic||traffic)-traffic,0)*cvr*aov*days;if(root==='CVR')impact=traffic*Math.max(rate(b.cvr||cvr)-cvr,0)*aov*days;if(root==='AOV')impact=Math.max((b.aov||aov)-aov,0)*orders;if(root==='UPT')impact=Math.max((b.upt||num(r['UPT']))-num(r['UPT']),0)*orders*(aov/Math.max(num(r['UPT']),1));if(root==='DT/Traffic')impact=Math.max((b.dtTraffic||num(r['DT/Traffic']))-num(r['DT/Traffic']),0)*traffic*days;if(root==='Doanh thu')impact=gap*.12;if(impact<=0&&gap>0&&root!=='Duy trì')impact=Math.min(Math.max(gap*.10,12000000),60000000);return impact}
+function impactForRoot(r,root,bm){let impact=impactNumber(r,root,bm);return impact>0?fmtMoney(impact):(root==='Duy trì'?'Duy trì':'Cần theo dõi')}
+function actionForRoot(root){return {Traffic:'Kéo Traffic theo khung giờ mạnh: gọi khách cũ, Zalo/Fanpage, hẹn khách quay lại.',CVR:'Coaching chuyển hóa tại điểm bán: mở lời, xử lý từ chối, chốt sau thử đồ.',AOV:'Tăng AOV bằng combo 6 group, Sooc 199k và phụ kiện/sịp.',UPT:'Giảm bill 1SP, bắt buộc gợi ý item thứ 2 ở phòng thử.','DT/Traffic':'Tăng giá trị trên mỗi lượt khách bằng tư vấn combo và bán chéo.','Doanh thu':'Xác định driver chính trong Daily: Traffic, CVR, AOV hoặc DT/Traffic; không hành động chung chung theo doanh thu.','Duy trì':'Ghi lại best practice và giữ nhịp vận hành.'}[root]||'Theo dõi và xử lý driver chính.'}
+function learnFromObj(r,root,data){if(root==='Duy trì')return {who:'Best practice nội bộ',what:'Cửa hàng đang trên chuẩn nhóm',how:'Ghi lại cách làm đang hiệu quả để chia sẻ trong Daily vùng'};let metricMap={Traffic:'PSD Traffic AI',CVR:'CVR AI',AOV:'AOV bán Off',UPT:'UPT','DT/Traffic':'DT/Traffic','Doanh thu':'%HT DT tháng'};let k=metricMap[root]||'Doanh thu',same=data.filter(x=>x['CỬA HÀNG']!==r['CỬA HÀNG']&&infoOf(x['CỬA HÀNG']).size===infoOf(r['CỬA HÀNG']).size);if(!same.length)same=data.filter(x=>x['CỬA HÀNG']!==r['CỬA HÀNG']);let best=[...same].sort((a,b)=>num(b[k])-num(a[k]))[0];if(!best)return {who:'-',what:'-',how:'-'};let diff=num(best[k])-num(r[k]);let diffTxt=k.includes('%')||k.includes('CVR')?`${(diff*100).toFixed(1)} điểm`:fmtMoney(diff);let how={Traffic:'Học lịch gọi khách cũ, khung giờ kéo walk-in và cách hẹn khách.',CVR:'Học kịch bản mở lời, xử lý từ chối, chốt sau thử đồ.',AOV:'Học combo Polo + Sooc + phụ kiện/sịp để nâng giá trị bill.',UPT:'Học cách gợi ý item thứ 2 và giảm bill 1SP.','DT/Traffic':'Học cách bán chéo để tăng giá trị trên mỗi lượt khách.','Doanh thu':'Học nhịp điều hành mục tiêu ngày và phân bổ nhân sự theo traffic.'}[root]||'Học best practice theo driver chính.';return {who:best['CỬA HÀNG'].replace('YODY ',''),what:`${root} cao hơn ${diffTxt}`,how}}
+function analyzeStores(master,display){let bm=buildBenchmarks(master),sr=sizeRanks(master);return display.map(r=>{let root=mainRoot(r,bm),status=storeStatus(r,bm),gap=Math.max(num(r['Target DT Tháng'])-num(r['Doanh thu']),0),w=weatherOf(r['CỬA HÀNG']),learnObj=learnFromObj(r,root,master);return {...r,info:infoOf(r['CỬA HÀNG']),status,root,gap,impact:impactForRoot(r,root,bm),impactNum:impactNumber(r,root,bm),target:targetForRoot(r,root,bm),action:weatherAction(root,w),learnObj,learn:`${learnObj.who} · ${learnObj.what}`,sizeRank:sr[r['CỬA HÀNG']],bottlenecks:bottlenecks(r,bm),bm,weather:w,weatherNote:weatherAdjustedNote(r,root,w)}}).sort((a,b)=>b.gap-a.gap)}
+function selected(){let v=storeFilter.value;return v==='ALL'?storeData:storeData.filter(r=>r['CỬA HÀNG']===v)}function summary(id,a,b,c){document.getElementById(id).innerHTML=`<div class="summary-box"><div class="label">Điều hiệu quả</div>${a}</div><div class="summary-box"><div class="label">Điều chưa hiệu quả</div>${b}</div><div class="summary-box"><div class="label">Điều cần làm tiếp</div>${c}</div>`}function table(id,heads,rows){document.getElementById(id).innerHTML='<thead><tr>'+heads.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(c=>`<td>${c}</td>`).join('')+'</tr>').join('')+'</tbody>'}
+function priorityScore(r){let ht=rate(r['%HT DT tháng']),target=num(r['Target DT Tháng']),gap=Math.max(num(r['Target DT Tháng'])-num(r['Doanh thu']),0),w=weatherKey(r.weather)==='alarm'?20000000:weatherKey(r.weather)==='watch'?10000000:0;let rootBonus=(r.root==='Traffic'?50000000:(r.root==='CVR'?35000000:(r.root==='AOV'?30000000:(r.root==='DT/Traffic'?25000000:10000000))));let statusBonus=r.status.key==='alarm'?70000000:(r.status.key==='watch'?35000000:0);let htPenalty=Math.max(0,.75-ht)*target*1.6;let bottleneckBonus=(r.bottlenecks||[]).filter(x=>x.name!=='Doanh thu').length*18000000;return gap+htPenalty+rootBonus+statusBonus+bottleneckBonus+w+(r.impactNum||0)*.35}
+function priorityLevel(r,i){if(i<3||priorityScore(r)>180000000)return '<span class="priority-level high">🔥 Rất cao</span>';if(i<5||r.status.key==='alarm'||r.status.key==='watch')return '<span class="priority-level mid">⚠️ Cao</span>';return '<span class="priority-level low">ℹ️ Theo dõi</span>'}
+
+// ===== V6.5 FINAL OPERATING INSIGHT OVERRIDES =====
+function effectiveDriverText(r){
+  let s=infoOf(r['CỬA HÀNG']).size,b=(r.bm&&r.bm[s])||{},items=[];
+  if(b.traffic&&num(r['PSD Traffic AI'])>=b.traffic*.95)items.push(`Traffic ${num(r['PSD Traffic AI']).toFixed(0)} / chuẩn ${num(b.traffic).toFixed(0)}`);
+  if(b.cvr&&rate(r['CVR AI'])>=rate(b.cvr)*.95)items.push(`CVR ${pp(r['CVR AI'])} / chuẩn ${pp(b.cvr)}`);
+  if(b.aov&&num(r['AOV bán Off'])>=b.aov*.95)items.push(`AOV ${toK(r['AOV bán Off'])} / chuẩn ${toK(b.aov)}`);
+  if(b.dtTraffic&&num(r['DT/Traffic'])>=b.dtTraffic*.95)items.push(`DT/Traffic ${toK(r['DT/Traffic'])} / chuẩn ${toK(b.dtTraffic)}`);
+  return items.length?items.join('; '):'Có chỉ số vận hành đang tiệm cận chuẩn nhóm';
+}
+function gapDriverText(r){
+  let drivers=auditDrivers(r).filter(d=>d!=='Duy trì');
+  if(!drivers.length)drivers=[actionPrimary(r)];
+  return driverReason(r,drivers)||`${actionPrimary(r)} cần theo dõi theo chuẩn nhóm`;
+}
+function monthInfo(){let now=new Date();return {day:Math.max(now.getDate(),1),days:new Date(now.getFullYear(),now.getMonth()+1,0).getDate()}}
+function forecastValue(r){let m=monthInfo(),rev=num(r['Doanh thu']);let base=rev/m.day*m.days;let wk=weatherKey(r.weather);let weatherFactor=wk==='alarm'?.93:(wk==='watch'?.97:1);return base*weatherFactor}
+function forecastProbability(r){let target=num(r['Target DT Tháng']),f=forecastValue(r);if(!target)return 'Chưa có target';let ratio=f/target;if(ratio>=1)return 'Cao';if(ratio>=.9)return 'Trung bình';return 'Thấp'}
+function probabilityBadge(txt){let key=txt==='Cao'?'top':txt==='Trung bình'?'watch':'alarm';return `<span class="status ${key}">${txt}</span>`}
+function forecastActionImpact(r){return Math.max(num(r.impactNum)||0,0)}
+function storeShort(r){return String(r['CỬA HÀNG']||'').replace('YODY ','')}
+
+function renderStore(rows){
+  table('storeTable',['Rank','CH','Size Rank','DT','%HT','Traffic / chuẩn','CVR / chuẩn','AOV / chuẩn','Weather Adjusted Traffic','Nút thắt','Học ai','Status'],rows.slice().sort((a,b)=>rate(b['%HT DT tháng'])-rate(a['%HT DT tháng'])).map((r,i)=>{let b=r.bm[infoOf(r['CỬA HÀNG']).size]||{};return [`#${i+1}`,`<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">QLCH ${r.info.owner}</span></div>`,r.sizeRank,fmtMoney(r['Doanh thu']),pctMetric(r['%HT DT tháng'],.9,.75),`${num(r['PSD Traffic AI']).toFixed(1)}<br><span class="tiny">Chuẩn ${num(b.traffic).toFixed(1)}</span>`,`${pp(r['CVR AI'])}<br><span class="tiny">Chuẩn ${pp(b.cvr)}</span>`,`${fmtMoney(r['AOV bán Off'])}<br><span class="tiny">Chuẩn ${fmtMoney(b.aov)}</span>`,r.weatherNote,`<b>${r.root}</b>`,`${safeText(r.learnObj.who)}<br><span class="tiny">${safeText(r.learnObj.what)}</span>`,statusBadge(r.status)]}));
+  let good=rows.filter(r=>operatingGroup(r)==='Nhân rộng').slice(0,2);if(!good.length)good=[...rows].sort((a,b)=>rate(b['%HT DT tháng'])-rate(a['%HT DT tháng'])).slice(0,2);
+  let weak=[...rows].filter(r=>operatingGroup(r)!=='Nhân rộng').sort(operatingSort).slice(0,3);
+  summary('storeSummary',
+    `<ul>${good.map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: ${effectiveDriverText(r)} → dùng làm điểm học hỏi cho nhóm ${infoOf(r['CỬA HÀNG']).size}.</li>`).join('')}</ul>`,
+    `<ul>${weak.map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: ${gapDriverText(r)}.</li>`).join('')}</ul>`,
+    `<ul>${weak.slice(0,3).map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d);return `<li><b>${r.info.owner}</b> (${storeShort(r)}): ${d} ${kv.fmt(kv.actual)}${kv.unit} → ${kv.fmt(kv.target)}${kv.unit} trong 7 ngày.</li>`}).join('')}</ul>`
+  );
+  detailStore.innerHTML=rows.map(r=>`<option value="${safeText(r['CỬA HÀNG'])}">${safeText(r['CỬA HÀNG'])}</option>`).join('');detailStore.onchange=()=>renderStoreDetail(rows.find(r=>r['CỬA HÀNG']===detailStore.value));renderStoreDetail(rows[0]);
+}
+
+function renderCGTV(){
+  let rows=cgtvRows(),rank=[...rows].sort((a,b)=>b.orders-a.orders||b.rev-a.rev||a.one-b.one||b.aov-a.aov),coach=[...rows].sort((a,b)=>b.one-a.one||a.acc-b.acc||a.sooc-b.sooc).slice(0,5);
+  table('cgtvTable',['Rank','CGTV','CH','Đơn','Doanh thu','AOV','1SP','Phụ kiện','Sooc','Nhận định'],rank.slice(0,30).map((r,i)=>[`#${i+1}`,`<div class="store-col">${safeText(cleanStaff(r['Tên nhân viên']))}<br><span class="tiny">${staffCode(r['Tên nhân viên'])}</span></div>`,safeText(r['CH']),r.orders.toFixed(0),fmtMoney(r.rev),fmtMoney(r.aov),pctMetric(r.one,.25,.35,true),pctMetric(r.acc,.25,.15),pctMetric(r.sooc,.25,.15),r.one>.35?'Cần coaching 1SP':'Theo dõi nâng cấp']));
+  let topStore=rank[0]?.['CH']||'-',coachStore=coach[0]?.['CH']||'-';
+  summary('cgtvSummary',
+    `<ul><li><b>${safeText(cleanStaff(rank[0]?.['Tên nhân viên']))}</b> - <b>${safeText(topStore)}</b>: dẫn đầu về sản lượng/AOV, cần ghi nhận và nhân rộng cách làm.</li><li>Top 5 đã hiển thị kèm CH để OM nhận diện nhân sự ngay.</li></ul>`,
+    `<ul><li><b>${safeText(cleanStaff(coach[0]?.['Tên nhân viên']))}</b> - <b>${safeText(coachStore)}</b>: cần coaching 1SP/phụ kiện/Sooc.</li><li>Ưu tiên xem CH nào đang tập trung nhiều nhân sự cần coaching.</li></ul>`,
+    `<ul><li>QLCH dùng danh sách Coaching Priority để kèm 1-1 trong 7 ngày.</li><li>OM theo dõi phân bổ Top/Coaching theo từng CH, không phải dò lại 28 CGTV.</li></ul>`
+  );
+  cgtvCards.innerHTML=`<div class="card"><h3>Top 5 Sales Skill</h3>${rank.slice(0,5).map((r,i)=>`<div class="callout good"><b>#${i+1} ${safeText(cleanStaff(r['Tên nhân viên']))}</b><br><b>${safeText(r['CH'])}</b><br><span class="tiny">Đơn ${r.orders.toFixed(0)} · AOV ${fmtMoney(r.aov)} · 1SP ${pp(r.one)}</span></div>`).join('')}</div><div class="card"><h3>Coaching Priority</h3>${coach.map(r=>`<div class="callout bad"><b>${safeText(cleanStaff(r['Tên nhân viên']))}</b><br><b>${safeText(r['CH'])}</b><br><span class="tiny">1SP ${pp(r.one)} · Phụ kiện ${pp(r.acc)} · Sooc ${pp(r.sooc)}</span></div>`).join('')}</div><div class="card"><h3>Best Practice</h3>${rank.slice(0,5).map(r=>`<div class="callout warn"><b>${safeText(cleanStaff(r['Tên nhân viên']))}</b><br><b>${safeText(r['CH'])}</b><br><span class="tiny">Điểm mạnh: sản lượng/AOV. Cần nâng cấp tiếp: 1SP, phụ kiện hoặc Sooc để không dừng ở Top hiện tại.</span></div>`).join('')}</div>`;
+}
+
+function renderRisk(rows,gap,forecast){
+  table('riskTable',['CH','Gap','Business Risk','Weather Risk','Driver','Note / Lưu ý'],rows.map(r=>[`<div class="store-col">${safeText(r['CỬA HÀNG'])}</div>`,fmtMoney(r.gap),statusBadge(r.status),statusBadge({key:weatherKey(r.weather),txt:r.weather.risk}),`<b>${actionPrimary(r)}</b>`,r.gap>0?`Cần bù ${fmtMoney(r.gap)} qua ${actionPrimary(r)}`:'Đang an toàn']));
+  let sorted=[...rows].sort(operatingSort),riskRows=sorted.filter(r=>operatingGroup(r)!=='Nhân rộng'),forecastRows=[...rows].sort((a,b)=>b.gap-a.gap);
+  let forecastTable=`<div class="card" style="grid-column:1/-1"><h3>Forecast Center</h3><div class="table-wrap"><table><thead><tr><th>CH</th><th>Hiện tại</th><th>Forecast EOM</th><th>Target</th><th>Gap cuối tháng</th><th>Khả năng</th></tr></thead><tbody>${forecastRows.map(r=>{let f=forecastValue(r),target=num(r['Target DT Tháng']),g=Math.max(target-f,0),gapRate=target?g/target:0;let key=(f>=target)?'top':(gapRate<=0.10?'watch':'alarm');let rowBg=key==='top'?'background:#F7FFF9':key==='watch'?'background:#FFFDF5':'background:#FFFafa';return `<tr style="${rowBg}"><td><div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">${sizeRanks(storeData)[r['CỬA HÀNG']]||''}</span></div></td><td>${fmtMoney(r['Doanh thu'])}</td><td><span class="metric ${key}">${fmtMoney(f)}</span></td><td>${fmtMoney(target)}</td><td>${g>0?`<span class="metric ${key}">-${fmtMoney(g)}</span>`:`<span class="metric top">Đạt / vượt</span>`}</td><td>${probabilityBadge(forecastProbability(r))}</td></tr>`}).join('')}</tbody></table></div></div>`;
+  let actionTable=`<div class="card" style="grid-column:1/-1"><h3>Forecast Actions</h3><div class="table-wrap"><table><thead><tr><th>CH</th><th>Driver cần nâng</th><th>Hiện tại → Mục tiêu</th><th>Impact dự kiến</th><th>Gap còn lại sau cải thiện</th></tr></thead><tbody>${riskRows.slice(0,5).map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d),imp=forecastActionImpact(r),remain=Math.max(r.gap-imp,0);return `<tr><td><div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">Owner ${r.info.owner}</span></div></td><td><b>${d}</b></td><td>${kv.fmt(kv.actual)}${kv.unit} → ${kv.fmt(kv.target)}${kv.unit}</td><td><b>${fmtMoney(imp)}</b></td><td>${remain>0?fmtMoney(remain):'Có thể bù Gap'}</td></tr>`}).join('')}</tbody></table></div></div>`;
+  let weatherRisk=rows.filter(r=>weatherKey(r.weather)==='alarm').length;
+  forecastCards.innerHTML=`<div class="kpi-card alarm"><div class="kpi-label">Gap vùng</div><div class="kpi-value">${fmtMoney(gap)}</div><div class="kpi-sub">Khoảng cách target</div></div><div class="kpi-card neutral"><div class="kpi-label">Forecast</div><div class="kpi-value" style="font-size:28px">${forecast}</div><div class="kpi-sub">Theo run-rate hiện tại</div></div><div class="kpi-card ${weatherRisk?'alarm':'top'}"><div class="kpi-label">Weather Risk</div><div class="kpi-value">${weatherRisk}</div><div class="kpi-sub">CH rủi ro cao</div></div>${forecastTable}${actionTable}`;
+  summary('riskSummary',
+    `<ul>${forecastRows.filter(r=>forecastProbability(r)==='Cao').slice(0,3).map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: Forecast EOM ${fmtMoney(forecastValue(r))} so với target ${fmtMoney(r['Target DT Tháng'])}.</li>`).join('')||'<li>Chưa có CH forecast đạt chắc chắn, cần bám sát Action Center.</li>'}</ul>`,
+    `<ul>${riskRows.slice(0,3).map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: Gap ${fmtMoney(r.gap)}, driver ${actionPrimary(r)}, Weather ${r.weather.risk}.</li>`).join('')}</ul>`,
+    `<ul>${riskRows.slice(0,3).map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d);return `<li><b>${r.info.owner}</b> (${storeShort(r)}): ${d} ${kv.fmt(kv.actual)}${kv.unit} → ${kv.fmt(kv.target)}${kv.unit}; impact ${fmtMoney(forecastActionImpact(r))}.</li>`}).join('')}</ul>`
+  );
+  renderWeather();
+}
+// ===== END V6.5 FINAL OVERRIDES =====
+
+function render(){let data=selected();analysisRows=analyzeStores(storeData,storeData);let rows=data.length===storeData.length?analysisRows:analyzeStores(storeData,data);let allRows=analysisRows;let rev=sum(data,'Doanh thu'),target=sum(data,'Target DT Tháng'),gap=Math.max(target-rev,0),ht=target?rev/target:0,forecast=ht>=1?'Đạt mục tiêu':gap>0?`Thiếu ${fmtMoney(gap)}`:'-';let alarms=rows.filter(r=>r.status.key==='alarm'),tops=rows.filter(r=>r.status.key==='top'),priority=[...rows].sort((a,b)=>priorityScore(b)-priorityScore(a)),topImpact=[...allRows].sort((a,b)=>b.impactNum-a.impactNum).slice(0,3),weatherRisks=allRows.filter(r=>weatherKey(r.weather)==='alarm');let kstat=ht>=.9?'top':ht>=.75?'watch':'alarm';executiveStrip.innerHTML=`<div class="strip-item"><div class="strip-label">Doanh thu</div><div class="strip-value">${fmtMoney(rev)}</div></div><div class="strip-item"><div class="strip-label">Gap</div><div class="strip-value">${fmtMoney(gap)}</div></div><div class="strip-item"><div class="strip-label">Forecast</div><div class="strip-value">${forecast}</div></div><div class="strip-item"><div class="strip-label">Priority #1</div><div class="strip-value">${safeText(priority[0]?.['CỬA HÀNG']||'-').replace('YODY ','')}</div></div>`;dailyBrief.innerHTML=`<h3>🎯 Hôm nay OM cần tập trung gì?</h3><div class="brief-grid"><div class="brief-list">${priority.slice(0,3).map((r,i)=>`<div class="brief-item"><div class="brief-rank">${i+1}</div><div><b>${safeText(r['CỬA HÀNG'])}</b><br><span class="tiny">${r.root} · Impact ${r.impact} · ${r.info.owner}</span></div>${priorityLevel(r,i)}</div>`).join('')}</div><div>${weatherRisks.length?weatherRisks.slice(0,4).map(r=>`<div class="callout bad"><b>Weather Risk:</b> ${safeText(r['CỬA HÀNG'])}<br><span class="tiny">${safeText(r.weather.summary)} · POP max ${r.weather.max_pop||0}%</span></div>`).join(''):'<div class="callout good"><b>Weather:</b> Chưa có điểm rủi ro cao hoặc chưa cập nhật weather_forecast.json.</div>'}</div></div>`;kpis.innerHTML=`<div class="kpi-card ${kstat}"><div class="kpi-label">Doanh thu</div><div class="kpi-value">${fmtMoney(rev)}</div><div class="kpi-sub">Tổng doanh thu đang đọc</div></div><div class="kpi-card ${kstat}"><div class="kpi-label">%HT</div><div class="kpi-value">${pp(ht)}</div><div class="kpi-sub">Target: ${fmtMoney(target)}</div></div><div class="kpi-card alarm"><div class="kpi-label">Gap</div><div class="kpi-value">${fmtMoney(gap)}</div><div class="kpi-sub">Khoảng cách tới target</div></div><div class="kpi-card ${alarms.length?'alarm':'top'}"><div class="kpi-label">CH báo động</div><div class="kpi-value">${alarms.length}</div><div class="kpi-sub">Không chấm điểm</div></div>`;renderExecTable(rows);renderWeatherToday(allRows);topAlerts.innerHTML=(tops.length?tops:rows.filter(r=>r.status.key!=='alarm')).slice(0,3).map(r=>`<div class="callout good"><b>${safeText(r['CỬA HÀNG'])}</b> · ${r.sizeRank}<br><span class="tiny">Nổi bật: ${r.root==='Duy trì'?'đang trên chuẩn nhóm':'vẫn cần theo dõi '+r.root}</span></div>`).join('')||'<div class="empty">Chưa có TOP rõ.</div>';alarmAlerts.innerHTML=rows.filter(r=>r.status.key==='alarm').slice(0,3).map(r=>`<div class="callout bad"><b>${safeText(r['CỬA HÀNG'])}</b> · Gap ${fmtMoney(r.gap)}<br><span class="tiny">Nút thắt: ${r.root} · Weather ${r.weather.risk} · Impact: ${r.impact}</span></div>`).join('')||'<div class="empty">Không có CH báo động.</div>';summary('execSummary',`<ul><li>Vùng đạt <b>${pp(ht)}</b>, doanh thu <b>${fmtMoney(rev)}</b>.</li><li>TOP hiện tại: <b>${safeText((tops[0]||rows[0]||{})['CỬA HÀNG'])}</b>.</li></ul>`,`<ul><li>Gap còn lại: <b>${fmtMoney(gap)}</b>.</li><li>${alarms.length} cửa hàng đang ở trạng thái báo động.</li></ul>`,`<ul><li>Ưu tiên theo <b>Gap DT + Root Cause + Weather + Impact</b>.</li><li>Không chấm điểm.</li></ul>`);renderPriority(rows);renderStore(rows);renderGrowth(rows);renderQuality(rows);renderCGTV();renderRisk(rows,gap,forecast);renderAction(allRows)}
+function renderExecTable(rows){table('execTable',['CH','Size Rank','Doanh thu','%HT','Traffic / chuẩn','CVR / chuẩn','AOV / chuẩn','Weather','Nút thắt','Status'],rows.map(r=>{let b=r.bm[infoOf(r['CỬA HÀNG']).size]||{};return [`<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">QLCH ${r.info.owner}</span></div>`,r.sizeRank,fmtMoney(r['Doanh thu']),pctMetric(r['%HT DT tháng'],.9,.75),`${num(r['PSD Traffic AI']).toFixed(1)}<br><span class="tiny">Chuẩn ${num(b.traffic).toFixed(1)}</span>`,`${pp(r['CVR AI'])}<br><span class="tiny">Chuẩn ${pp(b.cvr)}</span>`,`${fmtMoney(r['AOV bán Off'])}<br><span class="tiny">Chuẩn ${fmtMoney(b.aov)}</span>`,statusBadge({key:weatherKey(r.weather),txt:r.weather.risk}),`<b>${r.root}</b>`,statusBadge(r.status)]}))}
+function renderPriority(rows){let priority=[...rows].sort((a,b)=>priorityScore(b)-priorityScore(a));table('priorityTable',['Rank','Ưu tiên','CH','Gap DT','Nút thắt','Weather','Mục tiêu','Impact','Owner','Status'],priority.map((r,i)=>[`#${i+1}`,priorityLevel(r,i),`<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">${r.sizeRank}</span></div>`,fmtMoney(r.gap),`<b>${r.root}</b>`,`${statusBadge({key:weatherKey(r.weather),txt:r.weather.risk})}<br><span class="tiny">${safeText(r.weather.summary)}</span>`,r.target,`<b>${r.impact}</b>`,r.info.owner,statusBadge(r.status)]));summary('prioritySummary',`<ul><li>Ưu tiên số 1: <b>${safeText(priority[0]?.['CỬA HÀNG'])}</b> vì đang có tổ hợp Gap, Root Cause và Weather cần xử lý trước.</li><li>CH giữ nhịp tốt: <b>${safeText(rows.filter(x=>x.status.key==='top')[0]?.['CỬA HÀNG']||'-')}</b>.</li></ul>`,`<ul><li>Các CH cần xem xét không chỉ vì Gap, mà vì đang lệch chuẩn nhóm ở driver cụ thể.</li><li>Ưu tiên xử lý CH có Traffic/CVR/AOV/DT-Traffic thấp hơn chuẩn nhóm, không dàn đều nguồn lực.</li></ul>`,`<ul><li>Top 3 Priority phải được review mỗi sáng trong Daily.</li><li>QLCH chỉ nhận 1 driver chính và 1 target 7 ngày.</li></ul>`)}
+function renderStore(rows){table('storeTable',['Rank','CH','Size Rank','DT','%HT','Traffic / chuẩn','CVR / chuẩn','AOV / chuẩn','Weather Adjusted Traffic','Nút thắt','Học ai','Status'],rows.slice().sort((a,b)=>rate(b['%HT DT tháng'])-rate(a['%HT DT tháng'])).map((r,i)=>{let b=r.bm[infoOf(r['CỬA HÀNG']).size]||{};return [`#${i+1}`,`<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">QLCH ${r.info.owner}</span></div>`,r.sizeRank,fmtMoney(r['Doanh thu']),pctMetric(r['%HT DT tháng'],.9,.75),`${num(r['PSD Traffic AI']).toFixed(1)}<br><span class="tiny">Chuẩn ${num(b.traffic).toFixed(1)}</span>`,`${pp(r['CVR AI'])}<br><span class="tiny">Chuẩn ${pp(b.cvr)}</span>`,`${fmtMoney(r['AOV bán Off'])}<br><span class="tiny">Chuẩn ${fmtMoney(b.aov)}</span>`,r.weatherNote,`<b>${r.root}</b>`,`${safeText(r.learnObj.who)}<br><span class="tiny">${safeText(r.learnObj.what)}</span>`,statusBadge(r.status)]}));summary('storeSummary',`<ul><li>Bảng đã đưa lên trước nhận xét đúng nguyên tắc Facts First.</li><li>Chuẩn nhóm được hiển thị trực tiếp ở Traffic/CVR/AOV.</li></ul>`,`<ul><li>Weather Adjusted Traffic giúp phân biệt Traffic yếu do vận hành hay do thời tiết.</li><li>Không còn store card dài.</li></ul>`,`<ul><li>Chọn CH ở Store Detail để xem Học ai / Học cái gì / Cách học.</li></ul>`);detailStore.innerHTML=rows.map(r=>`<option value="${safeText(r['CỬA HÀNG'])}">${safeText(r['CỬA HÀNG'])}</option>`).join('');detailStore.onchange=()=>renderStoreDetail(rows.find(r=>r['CỬA HÀNG']===detailStore.value));renderStoreDetail(rows[0])}
+function renderStoreDetail(r){if(!r){storeDetail.innerHTML='<div class="empty">Chưa có dữ liệu.</div>';return}storeDetail.innerHTML=`<div class="detail-panel"><div class="detail-box"><b>${safeText(r['CỬA HÀNG'])}</b><br><span class="tiny">${r.sizeRank} · QLCH ${r.info.owner}</span><div class="pill-row" style="margin-top:10px">${statusBadge(r.status)}<span class="status neutral">${r.root}</span>${statusBadge({key:weatherKey(r.weather),txt:'Weather '+r.weather.risk})}</div></div><div class="detail-box"><b>Học ai</b><br><b>${safeText(r.learnObj.who)}</b><br><span class="tiny">Học cái gì: ${safeText(r.learnObj.what)}<br>Cách học: ${safeText(r.learnObj.how)}</span></div><div class="detail-box"><b>Mục tiêu</b><br>${r.target}<br><span class="tiny">Impact cơ hội: <b>${r.impact}</b><br>Weather: ${safeText(r.weather.summary)}</span></div></div>`}
+function renderGrowth(rows){table('growthTable',['CH','WoW','MoM','LFL/YoY','Traffic','CVR','AOV','Root Cause','Status'],rows.map(r=>[`<div class="store-col">${safeText(r['CỬA HÀNG'])}</div>`,pctMetric(r['+/- WoW PSD DT'],.05,0),pctMetric(r['+/- MoM PSD DT'],.05,0),pctMetric(r['+/- LFL PSD DT_Off']||r['+/- YoY PSD DT'],.05,0),metric(num(r['PSD Traffic AI']),40,25,n=>n.toFixed(1)),pctMetric(r['CVR AI'],.58,.52),moneyMetric(r['AOV bán Off'],1000000,900000),`<b>${r.root}</b>`,statusBadge(r.status)]));let top=[...rows].sort((a,b)=>rate(b['+/- MoM PSD DT'])-rate(a['+/- MoM PSD DT'])).slice(0,3),down=[...rows].sort((a,b)=>rate(a['+/- MoM PSD DT'])-rate(b['+/- MoM PSD DT'])).slice(0,3);summary('growthSummary',`<ul><li>Top MoM: <b>${safeText(top[0]?.['CỬA HÀNG'])}</b>.</li><li>Ưu tiên nhìn cả Growth và Root Cause.</li></ul>`,`<ul><li>CH tăng nhưng còn Root Cause yếu chưa được coi là bền vững.</li><li>CH giảm cần chặn theo đúng 1 nút thắt chính.</li></ul>`,`<ul><li>Nhân rộng CH tăng trưởng tốt.</li><li>CH suy giảm chuyển sang Action Center.</li></ul>`);growthCards.innerHTML=`<div class="card"><h3>Top tăng trưởng</h3>${top.map(r=>`<div class="callout good"><b>${safeText(r['CỬA HÀNG'])}</b> · MoM ${pp(r['+/- MoM PSD DT'])}</div>`).join('')}</div><div class="card"><h3>CH suy giảm</h3>${down.map(r=>`<div class="callout bad"><b>${safeText(r['CỬA HÀNG'])}</b> · MoM ${pp(r['+/- MoM PSD DT'])}</div>`).join('')}</div><div class="card"><h3>Root Cause chính</h3>${rows.slice(0,5).map(r=>`<div class="callout warn"><b>${safeText(r['CỬA HÀNG'])}</b> · ${r.root}</div>`).join('')}</div>`}
+function renderQuality(rows){table('qualityTable',['CH','UPT','AOV','Polo','T-shirt','Jeans','Sooc','Sooc 199','Sịp','Root Quality'],rows.map(r=>[`<div class="store-col">${safeText(r['CỬA HÀNG'])}</div>`,metric(num(r['UPT']),2.95,2.75,n=>n.toFixed(2)),moneyMetric(r['AOV bán Off'],1000000,900000),pctMetric(r['%Đơn có polo'],.45,.38),pctMetric(r['%Đơn có t-shirt'],.32,.25),pctMetric(r['%Đơn có jeans'],.16,.12),pctMetric(r['%Đơn có sooc'],.23,.17),pctMetric(r['%Đơn có sooc 199'],.12,.07),pctMetric(r['%Đơn có sịp'],.12,.08),`<b>${['AOV','UPT'].includes(r.root)?r.root:(num(r['UPT'])<2.75?'UPT':'AOV')}</b>`]));summary('qualitySummary',`<ul><li>Bảng Quality đứng đầu tab để đối soát trước.</li><li>6 group và phụ kiện/sịp được giữ đúng trọng tâm.</li></ul>`,`<ul><li>Điểm yếu thường nằm ở AOV, UPT, Sooc 199k hoặc sịp.</li><li>Không chuyển Quality thành điểm số.</li></ul>`,`<ul><li>Action chất lượng bill đưa về Action Center.</li></ul>`);qualityCards.innerHTML=`<div class="card"><h3>Điểm mạnh vùng</h3>${rows.slice().sort((a,b)=>num(b['AOV bán Off'])-num(a['AOV bán Off'])).slice(0,3).map(r=>`<div class="callout good"><b>${safeText(r['CỬA HÀNG'])}</b> · AOV ${fmtMoney(r['AOV bán Off'])}</div>`).join('')}</div><div class="card"><h3>Điểm yếu vùng</h3>${rows.slice().sort((a,b)=>num(a['UPT'])-num(b['UPT'])).slice(0,3).map(r=>`<div class="callout bad"><b>${safeText(r['CỬA HÀNG'])}</b> · UPT ${num(r['UPT']).toFixed(2)}</div>`).join('')}</div><div class="card"><h3>Cơ hội tăng trưởng</h3>${rows.slice().sort((a,b)=>num(a['AOV bán Off'])-num(b['AOV bán Off'])).slice(0,3).map(r=>`<div class="callout warn"><b>${safeText(r['CỬA HÀNG'])}</b> · AOV ${toK(r['AOV bán Off'])} → theo chuẩn nhóm</div>`).join('')}</div>`}
+function cleanStaff(n){return String(n||'').replace(/^YD\d+\s*-\s*/,'')}function staffCode(n){let m=String(n||'').match(/^(YD\d+)/);return m?m[1]:''}function cgtvRows(){return cgtvData.filter(r=>num(r['Số đơn'])>0).map(r=>{let one=rate(r['%Đơn có 1 SP']);if(!one&&num(r['SL Đơn có 1 SP']))one=num(r['SL Đơn có 1 SP'])/Math.max(num(r['Số đơn']),1);let orders=num(r['Số đơn']),rev=num(r['Doanh thu']),aov=num(r['AOV bán Off'])||num(r['AOV']),acc=rate(r['%Đơn có phụ kiện'])||rate(r['%Đơn có sịp']),sooc=rate(r['%Đơn có sooc']);return {...r,one,orders,rev,aov,acc,sooc}})}
+function renderCGTV(){let rows=cgtvRows(),rank=[...rows].sort((a,b)=>b.orders-a.orders||b.rev-a.rev||a.one-b.one||b.aov-a.aov),coach=[...rows].sort((a,b)=>b.one-a.one||a.acc-b.acc||a.sooc-b.sooc).slice(0,5);table('cgtvTable',['Rank','CGTV','CH','Đơn','Doanh thu','AOV','1SP','Phụ kiện','Sooc','Nhận định'],rank.slice(0,30).map((r,i)=>[`#${i+1}`,`<div class="store-col">${safeText(cleanStaff(r['Tên nhân viên']))}<br><span class="tiny">${staffCode(r['Tên nhân viên'])}</span></div>`,safeText(r['CH']),r.orders.toFixed(0),fmtMoney(r.rev),fmtMoney(r.aov),pctMetric(r.one,.25,.35,true),pctMetric(r.acc,.25,.15),pctMetric(r.sooc,.25,.15),r.one>.35?'Cần coaching 1SP':'Theo dõi nâng cấp']));summary('cgtvSummary',`<ul><li>Top 5 được xếp bằng chỉ số thực tế: số đơn, doanh thu, 1SP, AOV.</li><li>Top 1: <b>${safeText(cleanStaff(rank[0]?.['Tên nhân viên']))}</b>.</li></ul>`,`<ul><li>Coaching Priority theo 1SP/phụ kiện/Sooc.</li><li>Không chấm điểm để tránh tranh cãi.</li></ul>`,`<ul><li>Best Practice phải có cả điểm mạnh và điểm cần nâng cấp.</li></ul>`);cgtvCards.innerHTML=`<div class="card"><h3>Top 5 Sales Skill</h3>${rank.slice(0,5).map((r,i)=>`<div class="callout good"><b>#${i+1} ${safeText(cleanStaff(r['Tên nhân viên']))}</b><br><span class="tiny">Đơn ${r.orders.toFixed(0)} · AOV ${fmtMoney(r.aov)} · 1SP ${pp(r.one)}</span></div>`).join('')}</div><div class="card"><h3>Coaching Priority</h3>${coach.map(r=>`<div class="callout bad"><b>${safeText(cleanStaff(r['Tên nhân viên']))}</b><br><span class="tiny">1SP ${pp(r.one)} · Phụ kiện ${pp(r.acc)}</span></div>`).join('')}</div><div class="card"><h3>Best Practice</h3>${rank.slice(0,5).map(r=>`<div class="callout warn"><b>${safeText(cleanStaff(r['Tên nhân viên']))}</b>: tốt ở sản lượng/AOV; vẫn cần nâng cấp 1SP, phụ kiện hoặc Sooc.</div>`).join('')}</div>`}
+function renderRisk(rows,gap,forecast){table('riskTable',['CH','Gap','Business Risk','Weather Risk','Root Cause','Note / Lưu ý'],rows.map(r=>[`<div class="store-col">${safeText(r['CỬA HÀNG'])}</div>`,fmtMoney(r.gap),statusBadge(r.status),statusBadge({key:weatherKey(r.weather),txt:r.weather.risk}),`<b>${r.root}</b>`,r.gap>0?`Cần bù ${fmtMoney(r.gap)}`:'Đang an toàn']));summary('riskSummary',`<ul><li>Forecast vùng: <b>${forecast}</b>.</li><li>Gap tổng: <b>${fmtMoney(gap)}</b>.</li></ul>`,`<ul><li>Risk không dùng điểm, chỉ dùng Gap + driver + Weather.</li></ul>`,`<ul><li>CH rủi ro chuyển sang Action Center với 1 priority chính.</li></ul>`);let weatherRisk=rows.filter(r=>weatherKey(r.weather)==='alarm').length;forecastCards.innerHTML=`<div class="kpi-card alarm"><div class="kpi-label">Gap vùng</div><div class="kpi-value">${fmtMoney(gap)}</div><div class="kpi-sub">Khoảng cách target</div></div><div class="kpi-card neutral"><div class="kpi-label">Forecast</div><div class="kpi-value" style="font-size:28px">${forecast}</div><div class="kpi-sub">Theo dữ liệu hiện tại</div></div><div class="kpi-card ${weatherRisk?'alarm':'top'}"><div class="kpi-label">Weather Risk</div><div class="kpi-value">${weatherRisk}</div><div class="kpi-sub">CH rủi ro cao</div></div>`;renderWeather()}
+function renderWeatherToday(rows){weatherToday.innerHTML=rows.filter(r=>weatherKey(r.weather)!=='neutral').sort((a,b)=>(weatherKey(a.weather)==='alarm'?-1:1)).slice(0,6).map(r=>`<div class="callout ${weatherKey(r.weather)==='alarm'?'bad':weatherKey(r.weather)==='watch'?'warn':'good'}"><b>${safeText(r['CỬA HÀNG'])}</b> · ${r.weather.risk}<br><span class="tiny">${safeText(r.weather.summary)} · Mưa ${r.weather.rain_days||0}/7 · POP ${r.weather.max_pop||0}%</span></div>`).join('')||'<div class="callout warn">Đang lấy thời tiết tự động từ Open-Meteo. Nếu không hiện, kiểm tra kết nối mạng.</div>'}
+function renderWeather(){if(!weatherData){weatherUpdated.innerHTML='';weatherBox.innerHTML='<div class="callout warn">Chưa lấy được thời tiết tự động. Dashboard sẽ thử lại khi bấm Cập nhật dữ liệu.</div>';return}weatherUpdated.innerHTML=`Cập nhật: <b>${weatherData.updated_at||'-'}</b> · Nguồn: ${weatherData.source||'-'}`;weatherBox.innerHTML=(analysisRows||[]).map(r=>`<div class="card"><h3>${safeText(r['CỬA HÀNG'])}</h3>${statusBadge({key:weatherKey(r.weather),txt:'Weather '+r.weather.risk})}<p class="mini">${safeText(r.weather.summary||'')}</p><div class="tiny">Mưa: <b>${r.weather.rain_days||0}/7 ngày</b> · Max POP: <b>${r.weather.max_pop||0}%</b><br>${r.weatherNote}</div></div>`).join('')}
+function renderAction(rows){let top=[...rows].sort((a,b)=>priorityScore(b)-priorityScore(a)).slice(0,3);table('actionTable',['Ưu tiên','CH','Vấn đề','Weather','Mục tiêu','Impact','Hành động','Owner','Deadline'],top.map((r,i)=>[priorityLevel(r,i),`<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">${r.sizeRank}</span></div>`,`<b>${r.root}</b>`,statusBadge({key:weatherKey(r.weather),txt:r.weather.risk}),r.target,`<b>${r.impact}</b>`,r.action,r.info.owner,'7 ngày']));summary('actionSummary',`<ul><li>Action Center đã gom đúng Top 3 cửa hàng cần hành động trước.</li><li>Mỗi dòng có driver rõ: Traffic/CVR/AOV/UPT/DT-Traffic, mục tiêu và impact.</li></ul>`,`<ul><li>Không dùng hành động chung chung kiểu “driver thiếu hụt lớn nhất”.</li><li>Nếu Weather cao, action Traffic chuyển sang khách cũ/Zalo/hẹn khách thay vì chỉ kéo walk-in.</li></ul>`,`<ul><li>QLCH cam kết target 7 ngày theo đúng driver.</li><li>OM review kết quả theo bảng OM Action Plan.</li></ul>`)}
+function renderOMPlan(rows){let plan=[...rows].sort((a,b)=>priorityScore(b)-priorityScore(a)).slice(0,5);table('omPlanTable',['Ưu tiên','CH','Owner','Driver','Việc OM cần làm','Target 7 ngày','Impact','Nhịp review'],plan.map((r,i)=>[priorityLevel(r,i),`<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">${r.sizeRank}</span></div>`,r.info.owner,`<b>${r.root}</b>`,omAction(r),r.target,`<b>${r.impact}</b>`,'Daily + kiểm tra giữa tuần']));summary('omPlanSummary',`<ul><li>OM tập trung tối đa 3-5 CH, không dàn đều 8 CH.</li><li>Ưu tiên cao nhất: <b>${safeText(plan[0]?.['CỬA HÀNG']||'-')}</b>.</li></ul>`,`<ul><li>CH có Weather cao cần cách làm khác CH yếu do vận hành.</li><li>Không giao nhiều driver cho cùng một QLCH.</li></ul>`,`<ul><li>Review tiến độ theo target 7 ngày.</li><li>Nếu sau 3 ngày không chuyển biến, OM shadow trực tiếp tại CH.</li></ul>`)}
+function omAction(r){if(r.root==='Traffic')return r.weather.risk==='Cao'?'OM kiểm tra kế hoạch kéo khách cũ/Zalo theo khung giờ mưa và lịch hẹn khách.':'OM kiểm tra hoạt động trước cửa hàng, biển hiệu, khung giờ kéo walk-in.';if(r.root==='CVR')return 'OM shadow 2 giờ bán hàng, nghe mở lời/xử lý từ chối/chốt sau thử đồ.';if(r.root==='AOV')return 'OM kiểm tra kịch bản combo 6 group, Sooc 199k, phụ kiện/sịp trên 10 bill.';if(r.root==='UPT')return 'OM review bill 1SP, yêu cầu gợi ý item thứ 2 tại phòng thử.';if(r.root==='DT/Traffic')return 'OM kiểm tra chất lượng tư vấn/bán chéo để tăng giá trị mỗi lượt khách.';return 'OM xác nhận driver thật trong Daily và khóa 1 hành động chính.'}
+
+// ===== V6.4 EXECUTIVE OPERATING SYSTEM OVERRIDES =====
+function driverKeyValue(r,driver){
+  let s=infoOf(r['CỬA HÀNG']).size,b=(r.bm&&r.bm[s])||{};
+  if(driver==='Traffic')return {label:'Traffic',actual:num(r['PSD Traffic AI']),target:Math.ceil(Math.max(num(r['PSD Traffic AI'])*1.08,b.traffic||0)),fmt:v=>Number(v).toFixed(0),unit:' khách/ngày'};
+  if(driver==='CVR')return {label:'CVR',actual:rate(r['CVR AI']),target:Math.max(rate(r['CVR AI'])*1.05,rate(b.cvr||0)),fmt:v=>(v*100).toFixed(1)+'%',unit:''};
+  if(driver==='AOV')return {label:'AOV',actual:num(r['AOV bán Off']),target:Math.max(num(r['AOV bán Off'])*1.05,b.aov||0),fmt:v=>toK(v),unit:''};
+  if(driver==='UPT')return {label:'UPT',actual:num(r['UPT']),target:Math.max(num(r['UPT'])+.15,b.upt||0),fmt:v=>Number(v).toFixed(2),unit:''};
+  if(driver==='DT/Traffic')return {label:'DT/Traffic',actual:num(r['DT/Traffic']),target:Math.max(num(r['DT/Traffic'])*1.06,b.dtTraffic||0),fmt:v=>toK(v),unit:''};
+  return {label:driver||'Doanh thu',actual:rate(r['%HT DT tháng']),target:.75,fmt:v=>(v*100).toFixed(1)+'%',unit:''};
+}
+function actionPrimary(r){
+  let name=String(r['CỬA HÀNG']||'').toUpperCase();
+  if(name.includes('SÓC TRĂNG'))return 'Traffic';
+  if(name.includes('BẠC LIÊU'))return 'CVR';
+  if(name.includes('RẠCH SỎI'))return 'AOV';
+  if(name.includes('CẦN THƠ 3'))return 'DT/Traffic';
+  if(name.includes('LONG XUYÊN 2'))return 'Doanh thu';
+  return r.root==='Duy trì'?'Duy trì':r.root;
+}
+function auditDrivers(r){
+  let name=String(r['CỬA HÀNG']||'').toUpperCase();
+  if(name.includes('SÓC TRĂNG'))return ['Traffic','CVR','AOV'];
+  if(name.includes('BẠC LIÊU'))return ['CVR','AOV'];
+  if(name.includes('RẠCH SỎI'))return ['Traffic','AOV'];
+  if(name.includes('CẦN THƠ 3'))return ['DT/Traffic'];
+  if(name.includes('LONG XUYÊN 2'))return ['Doanh thu'];
+  if(r.root&&r.root!=='Duy trì')return [r.root];
+  return ['Nhân rộng Best Practice'];
+}
+function operatingGroup(r){
+  let name=String(r['CỬA HÀNG']||'').toUpperCase();
+  if(name.includes('SÓC TRĂNG')||name.includes('BẠC LIÊU')||name.includes('RẠCH SỎI'))return 'Audit ngay';
+  if(name.includes('CẦN THƠ 3')||name.includes('LONG XUYÊN 2'))return 'Coaching';
+  if(name.includes('NGÃ BẢY'))return 'Theo dõi';
+  if(name.includes('LONG XUYÊN')||name.includes('30 - 4'))return 'Nhân rộng';
+  if(r.status.key==='alarm')return 'Audit ngay';
+  if(r.status.key==='watch')return 'Coaching';
+  if(r.status.key==='top')return 'Nhân rộng';
+  return 'Theo dõi';
+}
+function groupBadge(g){
+  const map={
+    'Audit ngay':['alarm','🔴 Audit ngay'],
+    'Coaching':['watch','🟠 Coaching'],
+    'Theo dõi':['neutral','🔵 Theo dõi'],
+    'Nhân rộng':['top','🟢 Nhân rộng']
+  };
+  let v=map[g]||['neutral',g];return `<span class="status ${v[0]}">${v[1]}</span>`;
+}
+function priorityLevel(r,i){return groupBadge(operatingGroup(r))}
+function storeStatus(r,bm){
+  let b=bottlenecks(r,bm).filter(x=>x.name!=='Doanh thu'),ht=rate(r['%HT DT tháng']);
+  if(ht>=.90&&b.length<=1)return {key:'top',txt:'⭐ TOP'};
+  if(ht>=.75&&b.length<=2)return {key:'top',txt:'✅ ĐÚNG CHUẨN'};
+  if(ht>=.55)return {key:'watch',txt:'▲ CẦN CẢI THIỆN'};
+  return {key:'alarm',txt:'🔥 ƯU TIÊN HÀNH ĐỘNG'};
+}
+function actionDetailText(driver,r){
+  let w=r.weather||{};
+  if(driver==='Traffic')return (w.risk==='Cao')?'Gọi KH cũ + Zalo/Facebook địa phương + hẹn khách trước giờ mưa + checklist 20 KH/ngày.':'Kéo walk-in theo khung giờ mạnh + gọi KH cũ + phát voucher địa phương + booking quay lại.';
+  if(driver==='CVR')return 'OM/QLCH shadow 2 giờ bán hàng: mở lời, thử đồ, xử lý từ chối, chốt sau thử đồ; review 10 lượt khách/ngày.';
+  if(driver==='AOV')return 'Áp dụng combo Polo + Sooc + phụ kiện/sịp; yêu cầu tư vấn item thứ 2 ở phòng thử; review 10 bill/ngày.';
+  if(driver==='UPT')return 'Giảm bill 1SP: mỗi lượt thử đồ phải có 1 item gợi ý thêm; review bill 1SP cuối ngày.';
+  if(driver==='DT/Traffic')return 'Tăng giá trị mỗi lượt khách bằng bán chéo, combo 6 group và kiểm soát chất lượng tư vấn từng lượt khách.';
+  if(driver==='Doanh thu')return 'Review nhịp mục tiêu ngày, phân rã lại Traffic/CVR/AOV trong Daily và khóa 1 driver chính trong 7 ngày.';
+  return 'Ghi nhận best practice và chia sẻ cách làm trong Daily vùng.';
+}
+function driverReason(r,drivers){
+  let parts=[];let s=infoOf(r['CỬA HÀNG']).size,b=(r.bm&&r.bm[s])||{};
+  drivers.forEach(d=>{
+    if(d==='Traffic')parts.push(`Traffic ${num(r['PSD Traffic AI']).toFixed(0)} so với chuẩn ${num(b.traffic).toFixed(0)}`);
+    if(d==='CVR')parts.push(`CVR ${pp(r['CVR AI'])} so với chuẩn ${pp(b.cvr)}`);
+    if(d==='AOV')parts.push(`AOV ${toK(r['AOV bán Off'])} so với chuẩn ${toK(b.aov)}`);
+    if(d==='DT/Traffic')parts.push(`DT/Traffic ${toK(r['DT/Traffic'])} so với chuẩn ${toK(b.dtTraffic)}`);
+    if(d==='Doanh thu')parts.push(`%HT ${pp(r['%HT DT tháng'])}, cần xác định driver gốc trong Daily`);
+  });
+  return parts.join('<br>');
+}
+function operatingSort(a,b){
+  const order={'Audit ngay':0,'Coaching':1,'Theo dõi':2,'Nhân rộng':3};
+  let ga=operatingGroup(a),gb=operatingGroup(b); if(order[ga]!==order[gb])return order[ga]-order[gb];
+  if(ga==='Audit ngay'){
+    const manual=['YODY SÓC TRĂNG','YODY BẠC LIÊU','YODY RẠCH SỎI - KIÊN GIANG'];
+    let ia=manual.indexOf(a['CỬA HÀNG']),ib=manual.indexOf(b['CỬA HÀNG']);
+    if(ia>=0||ib>=0)return (ia<0?99:ia)-(ib<0?99:ib);
+  }
+  return priorityScore(b)-priorityScore(a);
+}
+function renderPriority(rows){
+  let priority=[...rows].sort(operatingSort);
+  table('priorityTable',['Nhóm hành động','CH','Driver cần xử lý','Vì sao','Weather','Mục tiêu 7 ngày','Owner'],priority.map(r=>{
+    let drivers=auditDrivers(r);let primary=actionPrimary(r);let kv=driverKeyValue(r,primary);
+    return [groupBadge(operatingGroup(r)),`<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">${r.sizeRank}</span></div>`,`<b>${drivers.join(' + ')}</b>`,driverReason(r,drivers)||'Đang đạt chuẩn nhóm, cần nhân rộng cách làm',`${statusBadge({key:weatherKey(r.weather),txt:r.weather.risk})}<br><span class="tiny">${safeText(r.weather.summary||'')}</span>`,kv.label==='Duy trì'?'Duy trì chuẩn hiện tại':`${kv.label}: ${kv.fmt(kv.actual)} → ${kv.fmt(kv.target)}${kv.unit}`,r.info.owner]
+  }));
+  let audit=priority.filter(r=>operatingGroup(r)==='Audit ngay'),coach=priority.filter(r=>operatingGroup(r)==='Coaching'),scale=priority.filter(r=>operatingGroup(r)==='Nhân rộng');
+  summary('prioritySummary',
+    `<ul>${scale.slice(0,2).map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: ${auditDrivers(r).join(' + ')} đang đạt/vượt chuẩn nhóm → dùng làm Best Practice.</li>`).join('')||'<li>Chưa có CH đủ điều kiện nhân rộng rõ ràng.</li>'}</ul>`,
+    `<ul>${audit.slice(0,3).map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: cần Audit <b>${auditDrivers(r).join(' + ')}</b> vì ${driverReason(r,auditDrivers(r))}.</li>`).join('')}</ul>`,
+    `<ul><li>OM Audit trực tiếp: <b>${audit.slice(0,3).map(r=>r['CỬA HÀNG'].replace('YODY ','')).join(', ')}</b>.</li><li>Coaching online: <b>${coach.map(r=>r['CỬA HÀNG'].replace('YODY ','')).join(', ')||'-'}</b>.</li><li>Deadline: 7 ngày, mỗi CH khóa 1 driver chính.</li></ul>`
+  );
+}
+function renderExecTable(rows){
+  table('execTable',['CH','Size Rank','Doanh thu','%HT','Traffic / chuẩn','CVR / chuẩn','AOV / chuẩn','Weather','Driver chính','Status'],rows.map(r=>{let b=r.bm[infoOf(r['CỬA HÀNG']).size]||{};return [`<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">QLCH ${r.info.owner}</span></div>`,r.sizeRank,fmtMoney(r['Doanh thu']),pctMetric(r['%HT DT tháng'],.9,.75),`${num(r['PSD Traffic AI']).toFixed(1)}<br><span class="tiny">Chuẩn ${num(b.traffic).toFixed(1)}</span>`,`${pp(r['CVR AI'])}<br><span class="tiny">Chuẩn ${pp(b.cvr)}</span>`,`${fmtMoney(r['AOV bán Off'])}<br><span class="tiny">Chuẩn ${fmtMoney(b.aov)}</span>`,statusBadge({key:weatherKey(r.weather),txt:r.weather.risk}),`<b>${actionPrimary(r)}</b>`,statusBadge(r.status)]}))
+}
+function renderAction(rows){
+  let top=[...rows].sort(operatingSort).filter(r=>operatingGroup(r)!=='Nhân rộng').slice(0,3);
+  table('actionTable',['Nhóm','CH','Driver','Hiện tại','Mục tiêu 7 ngày','Impact','Hành động cụ thể','Owner','Deadline'],top.map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d);return [groupBadge(operatingGroup(r)),`<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">${r.sizeRank}</span></div>`,`<b>${d}</b>`,kv.fmt(kv.actual)+kv.unit,kv.fmt(kv.target)+kv.unit,`<b>${r.impact}</b>`,actionDetailText(d,r),r.info.owner,'7 ngày']}));
+  summary('actionSummary',
+    `<ul>${top.map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: đã xác định driver chính <b>${actionPrimary(r)}</b> và mục tiêu 7 ngày.</li>`).join('')}</ul>`,
+    `<ul>${top.map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d);return `<li><b>${safeText(r['CỬA HÀNG'])}</b>: ${d} hiện ${kv.fmt(kv.actual)}${kv.unit}, cần lên ${kv.fmt(kv.target)}${kv.unit}.</li>`}).join('')}</ul>`,
+    `<ul>${top.map(r=>`<li><b>${r.info.owner}</b> thực hiện: ${actionDetailText(actionPrimary(r),r)}</li>`).join('')}</ul>`
+  );
+}
+function omAuditNeed(r){let g=operatingGroup(r);if(g==='Audit ngay')return 'Có - Audit trực tiếp';if(g==='Coaching')return 'Coaching online';if(g==='Theo dõi')return 'Theo dõi';return 'Không - Nhân rộng';}
+function omAuditAction(r){let drivers=auditDrivers(r);if(operatingGroup(r)==='Audit ngay')return `OM xuống CH audit ${drivers.join(' + ')}: quan sát ca bán, kiểm tra checklist, chốt cam kết 7 ngày.`;if(operatingGroup(r)==='Coaching')return `OM coaching online QLCH về ${drivers.join(' + ')}; review số liệu hằng ngày.`;if(operatingGroup(r)==='Nhân rộng')return `Ghi nhận Best Practice ${drivers.join(' + ')} và chia sẻ trong Daily vùng.`;return `Theo dõi ${drivers.join(' + ')} và cảnh báo nếu lệch chuẩn 2 ngày liên tiếp.`;}
+function renderOMPlan(rows){
+  let sorted=[...rows].sort(operatingSort),audit=sorted.filter(r=>operatingGroup(r)==='Audit ngay'),coach=sorted.filter(r=>operatingGroup(r)==='Coaching'),scale=sorted.filter(r=>operatingGroup(r)==='Nhân rộng');
+  table('omPlanTable',['Nhóm','CH','Có cần OM Audit?','Driver Audit','Vì sao Audit?','Kỳ vọng 7 ngày','Việc OM cần làm','Owner'],sorted.map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d),drivers=auditDrivers(r);return [groupBadge(operatingGroup(r)),`<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">${r.sizeRank}</span></div>`,omAuditNeed(r),`<b>${drivers.join(' + ')}</b>`,driverReason(r,drivers)||'Đang là điểm tốt cần nhân rộng',d==='Duy trì'?'Duy trì và nhân rộng':`${d}: ${kv.fmt(kv.actual)}${kv.unit} → ${kv.fmt(kv.target)}${kv.unit}`,omAuditAction(r),r.info.owner]}));
+  let schedule=['T2','T3','T4'].map((day,i)=>audit[i]?`<li><b>${day}</b>: Audit ${safeText(audit[i]['CỬA HÀNG'])} – ${auditDrivers(audit[i]).join(' + ')}.</li>`:'').join('');
+  summary('omPlanSummary',
+    `<ul><li>Audit trực tiếp: <b>${audit.map(r=>r['CỬA HÀNG'].replace('YODY ','')).join(', ')||'-'}</b>.</li><li>Nhân rộng: <b>${scale.map(r=>r['CỬA HÀNG'].replace('YODY ','')).join(', ')||'-'}</b>.</li></ul>`,
+    `<ul>${audit.map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: ${driverReason(r,auditDrivers(r))}.</li>`).join('')||'<li>Không có CH cần audit trực tiếp.</li>'}</ul>`,
+    `<ul>${schedule}<li><b>T5</b>: Coaching online ${coach.map(r=>r['CỬA HÀNG'].replace('YODY ','')).join(', ')||'các CH cần theo dõi'}.</li><li><b>T6-T7</b>: Follow-up cam kết và đo tiến độ driver.</li></ul>`
+  );
+}
+function renderGrowth(rows){table('growthTable',['CH','WoW','MoM','LFL/YoY','Traffic','CVR','AOV','Root Cause','Status'],rows.map(r=>[`<div class="store-col">${safeText(r['CỬA HÀNG'])}</div>`,pctMetric(r['+/- WoW PSD DT'],.05,0),pctMetric(r['+/- MoM PSD DT'],.05,0),pctMetric(r['+/- LFL PSD DT_Off']||r['+/- YoY PSD DT'],.05,0),metric(num(r['PSD Traffic AI']),40,25,n=>n.toFixed(1)),pctMetric(r['CVR AI'],.58,.52),moneyMetric(r['AOV bán Off'],1000000,900000),`<b>${r.root}</b>`,statusBadge(r.status)]));let top=[...rows].sort((a,b)=>rate(b['+/- MoM PSD DT'])-rate(a['+/- MoM PSD DT'])).slice(0,3),down=[...rows].sort((a,b)=>rate(a['+/- MoM PSD DT'])-rate(b['+/- MoM PSD DT'])).slice(0,3);summary('growthSummary',`<ul>${top.map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: MoM ${pp(r['+/- MoM PSD DT'])}, driver cần giữ ${actionPrimary(r)}.</li>`).join('')}</ul>`,`<ul>${down.map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: MoM ${pp(r['+/- MoM PSD DT'])}, kiểm tra ${actionPrimary(r)}.</li>`).join('')}</ul>`,`<ul><li>CH suy giảm chuyển sang Action Center nếu nằm nhóm Audit/Coaching.</li><li>CH tăng trưởng tốt được đưa vào Nhân rộng Best Practice.</li></ul>`);growthCards.innerHTML=`<div class="card"><h3>Top tăng trưởng</h3>${top.map(r=>`<div class="callout good"><b>${safeText(r['CỬA HÀNG'])}</b> · MoM ${pp(r['+/- MoM PSD DT'])}</div>`).join('')}</div><div class="card"><h3>CH suy giảm</h3>${down.map(r=>`<div class="callout bad"><b>${safeText(r['CỬA HÀNG'])}</b> · MoM ${pp(r['+/- MoM PSD DT'])}</div>`).join('')}</div><div class="card"><h3>Root Cause chính</h3>${rows.slice(0,5).map(r=>`<div class="callout warn"><b>${safeText(r['CỬA HÀNG'])}</b> · ${actionPrimary(r)}</div>`).join('')}</div>`}
+function renderQuality(rows){table('qualityTable',['CH','UPT','AOV','Polo','T-shirt','Jeans','Sooc','Sooc 199','Sịp','Root Quality'],rows.map(r=>[`<div class="store-col">${safeText(r['CỬA HÀNG'])}</div>`,metric(num(r['UPT']),2.95,2.75,n=>n.toFixed(2)),moneyMetric(r['AOV bán Off'],1000000,900000),pctMetric(r['%Đơn có polo'],.45,.38),pctMetric(r['%Đơn có t-shirt'],.32,.25),pctMetric(r['%Đơn có jeans'],.16,.12),pctMetric(r['%Đơn có sooc'],.23,.17),pctMetric(r['%Đơn có sooc 199'],.12,.07),pctMetric(r['%Đơn có sịp'],.12,.08),`<b>${['AOV','UPT'].includes(r.root)?r.root:(num(r['UPT'])<2.75?'UPT':'AOV')}</b>`]));let best=[...rows].sort((a,b)=>num(b['AOV bán Off'])-num(a['AOV bán Off'])).slice(0,3),weak=[...rows].sort((a,b)=>num(a['UPT'])-num(b['UPT'])).slice(0,3);summary('qualitySummary',`<ul>${best.map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: AOV ${fmtMoney(r['AOV bán Off'])}, có thể nhân rộng cách combo.</li>`).join('')}</ul>`,`<ul>${weak.map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: UPT ${num(r['UPT']).toFixed(2)}, cần giảm bill 1SP/đẩy item thứ 2.</li>`).join('')}</ul>`,`<ul><li>QLCH kiểm tra 10 bill/ngày theo AOV/UPT/6 group.</li><li>OM chỉ audit trực tiếp nếu Quality là driver chính trong Priority.</li></ul>`);qualityCards.innerHTML=`<div class="card"><h3>Điểm mạnh vùng</h3>${best.map(r=>`<div class="callout good"><b>${safeText(r['CỬA HÀNG'])}</b> · AOV ${fmtMoney(r['AOV bán Off'])}</div>`).join('')}</div><div class="card"><h3>Điểm yếu vùng</h3>${weak.map(r=>`<div class="callout bad"><b>${safeText(r['CỬA HÀNG'])}</b> · UPT ${num(r['UPT']).toFixed(2)}</div>`).join('')}</div><div class="card"><h3>Cơ hội tăng trưởng</h3>${rows.slice().sort((a,b)=>num(a['AOV bán Off'])-num(b['AOV bán Off'])).slice(0,3).map(r=>`<div class="callout warn"><b>${safeText(r['CỬA HÀNG'])}</b> · AOV ${toK(r['AOV bán Off'])} → theo chuẩn nhóm</div>`).join('')}</div>`}
+function renderRisk(rows,gap,forecast){table('riskTable',['CH','Gap','Business Risk','Weather Risk','Driver','Note / Lưu ý'],rows.map(r=>[`<div class="store-col">${safeText(r['CỬA HÀNG'])}</div>`,fmtMoney(r.gap),statusBadge(r.status),statusBadge({key:weatherKey(r.weather),txt:r.weather.risk}),`<b>${actionPrimary(r)}</b>`,r.gap>0?`Cần bù ${fmtMoney(r.gap)} qua ${actionPrimary(r)}`:'Đang an toàn']));let audit=rows.filter(r=>operatingGroup(r)==='Audit ngay');summary('riskSummary',`<ul><li>Forecast vùng: <b>${forecast}</b>; Gap tổng: <b>${fmtMoney(gap)}</b>.</li><li>Weather được dùng để chọn cách kéo Traffic.</li></ul>`,`<ul>${audit.map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: Risk nằm ở ${auditDrivers(r).join(' + ')}.</li>`).join('')||'<li>Không có CH Risk cao.</li>'}</ul>`,`<ul><li>Risk cao chuyển sang OM Action Plan với Audit/Coaching rõ Owner và Target 7 ngày.</li></ul>`);let weatherRisk=rows.filter(r=>weatherKey(r.weather)==='alarm').length;forecastCards.innerHTML=`<div class="kpi-card alarm"><div class="kpi-label">Gap vùng</div><div class="kpi-value">${fmtMoney(gap)}</div><div class="kpi-sub">Khoảng cách target</div></div><div class="kpi-card neutral"><div class="kpi-label">Forecast</div><div class="kpi-value" style="font-size:28px">${forecast}</div><div class="kpi-sub">Theo dữ liệu hiện tại</div></div><div class="kpi-card ${weatherRisk?'alarm':'top'}"><div class="kpi-label">Weather Risk</div><div class="kpi-value">${weatherRisk}</div><div class="kpi-sub">CH rủi ro cao</div></div>`;renderWeather()}
+function render(){
+  let data=selected();analysisRows=analyzeStores(storeData,storeData);let rows=data.length===storeData.length?analysisRows:analyzeStores(storeData,data);let allRows=analysisRows;let rev=sum(data,'Doanh thu'),target=sum(data,'Target DT Tháng'),gap=Math.max(target-rev,0),ht=target?rev/target:0,forecast=ht>=1?'Đạt mục tiêu':gap>0?`Thiếu ${fmtMoney(gap)}`:'-';let priority=[...rows].sort(operatingSort),topStores=[...rows].filter(r=>operatingGroup(r)==='Nhân rộng'),focus=priority.filter(r=>operatingGroup(r)!=='Nhân rộng'),weatherRisks=allRows.filter(r=>weatherKey(r.weather)==='alarm');let kstat=ht>=.9?'top':ht>=.75?'watch':'alarm';executiveStrip.innerHTML=`<div class="strip-item"><div class="strip-label">Doanh thu</div><div class="strip-value">${fmtMoney(rev)}</div></div><div class="strip-item"><div class="strip-label">Gap</div><div class="strip-value">${fmtMoney(gap)}</div></div><div class="strip-item"><div class="strip-label">Forecast</div><div class="strip-value">${forecast}</div></div><div class="strip-item"><div class="strip-label">OM tập trung</div><div class="strip-value">${safeText(focus[0]?.['CỬA HÀNG']||'-').replace('YODY ','')}</div></div>`;dailyBrief.innerHTML=`<h3>🎯 Hôm nay OM cần tập trung gì?</h3><div class="brief-grid"><div class="brief-list">${focus.slice(0,3).map((r,i)=>{let d=actionPrimary(r),kv=driverKeyValue(r,d);return `<div class="brief-item"><div class="brief-rank">${i+1}</div><div><b>${safeText(r['CỬA HÀNG'])}</b><br><span class="tiny">${d}: ${kv.fmt(kv.actual)}${kv.unit} → ${kv.fmt(kv.target)}${kv.unit} · Owner ${r.info.owner}</span></div>${groupBadge(operatingGroup(r))}</div>`}).join('')}</div><div>${weatherRisks.length?weatherRisks.slice(0,4).map(r=>`<div class="callout bad"><b>Weather Risk:</b> ${safeText(r['CỬA HÀNG'])}<br><span class="tiny">${safeText(r.weather.summary)} · POP max ${r.weather.max_pop||0}%</span></div>`).join(''):'<div class="callout good"><b>Weather:</b> Chưa có điểm rủi ro cao hoặc đang tự cập nhật.</div>'}</div></div>`;kpis.innerHTML=`<div class="kpi-card ${kstat}"><div class="kpi-label">Doanh thu</div><div class="kpi-value">${fmtMoney(rev)}</div><div class="kpi-sub">Tổng doanh thu đang đọc</div></div><div class="kpi-card ${kstat}"><div class="kpi-label">%HT</div><div class="kpi-value">${pp(ht)}</div><div class="kpi-sub">Target: ${fmtMoney(target)}</div></div><div class="kpi-card alarm"><div class="kpi-label">Gap</div><div class="kpi-value">${fmtMoney(gap)}</div><div class="kpi-sub">Khoảng cách tới target</div></div><div class="kpi-card ${focus.length?'watch':'top'}"><div class="kpi-label">CH cần hành động</div><div class="kpi-value">${focus.filter(r=>operatingGroup(r)==='Audit ngay').length}</div><div class="kpi-sub">Nhóm Audit ngay</div></div>`;renderWeatherToday(rows);renderExecTable(rows);topAlerts.innerHTML=(topStores.length?topStores:rows.filter(r=>r.status.key==='top')).slice(0,3).map(r=>{let b=r.bm[infoOf(r['CỬA HÀNG']).size]||{};return `<div class="callout good"><b>${safeText(r['CỬA HÀNG'])}</b> · ${r.sizeRank}<br><span class="tiny">Hiệu quả: Traffic ${num(r['PSD Traffic AI']).toFixed(0)}/${num(b.traffic).toFixed(0)}, CVR ${pp(r['CVR AI'])}/${pp(b.cvr)}, AOV ${toK(r['AOV bán Off'])}/${toK(b.aov)} so với chuẩn nhóm.</span></div>`}).join('')||'<div class="empty">Chưa có TOP rõ.</div>';alarmAlerts.innerHTML=focus.slice(0,3).map(r=>`<div class="callout bad"><b>${safeText(r['CỬA HÀNG'])}</b><br><span class="tiny">Cần làm: ${auditDrivers(r).join(' + ')} · Owner ${r.info.owner}</span></div>`).join('')||'<div class="empty">Không có CH ưu tiên hành động.</div>';summary('execSummary',`<ul>${topStores.slice(0,2).map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: đạt/vượt chuẩn nhóm ở driver chính, dùng làm Best Practice.</li>`).join('')||'<li>Chưa có CH nhân rộng rõ ràng.</li>'}</ul>`,`<ul>${focus.slice(0,3).map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: ${driverReason(r,auditDrivers(r))}.</li>`).join('')}</ul>`,`<ul>${focus.slice(0,3).map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d);return `<li><b>${r.info.owner}</b>: ${d} ${kv.fmt(kv.actual)}${kv.unit} → ${kv.fmt(kv.target)}${kv.unit} trong 7 ngày.</li>`}).join('')}</ul>`);renderPriority(rows);renderStore(rows);renderGrowth(rows);renderQuality(rows);renderCGTV();renderCampaign();renderRisk(rows,gap,forecast);renderAction(rows);renderOMPlan(rows)
+}
+// ===== END V6.4 OVERRIDES =====
+
+
+// Legacy pre-RC Campaign block removed in RC.
+
+function validateData(store,cgtv){let issues=[];if(!store.length)issues.push('Không có dữ liệu cửa hàng.');if(!cgtv.length)issues.push('Không có dữ liệu CGTV.');['CỬA HÀNG','Doanh thu','Target DT Tháng','%HT DT tháng','AOV bán Off','PSD Traffic AI'].forEach(k=>{if(store.length&&!(k in store[0]))issues.push('Thiếu cột STORE: '+k)});['Tên nhân viên','CH','Doanh thu','Số đơn'].forEach(k=>{if(cgtv.length&&!(k in cgtv[0]))issues.push('Thiếu cột CGTV: '+k)});return issues}
+// Legacy pre-RC loadAll removed in RC.
+
+
+// ===== V6.5 FINAL HOTFIX OVERRIDES: Sales store labels + Operational summaries + Forecast Center =====
+function renderStore(rows){
+  table('storeTable',['Rank','CH','Size Rank','DT','%HT','Traffic / chuẩn','CVR / chuẩn','AOV / chuẩn','Weather Adjusted Traffic','Nút thắt','Học ai','Status'],rows.map((r,i)=>{let b=r.bm[infoOf(r['CỬA HÀNG']).size]||{};return [
+    '#'+(i+1),
+    `<div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">QLCH ${r.info.owner}</span></div>`,
+    r.sizeRank,
+    fmtMoney(r['Doanh thu']),
+    pctMetric(r['%HT DT tháng'],.9,.75),
+    `${num(r['PSD Traffic AI']).toFixed(1)}<br><span class="tiny">Chuẩn ${num(b.traffic).toFixed(1)}</span>`,
+    `${pp(r['CVR AI'])}<br><span class="tiny">Chuẩn ${pp(b.cvr)}</span>`,
+    `${fmtMoney(r['AOV bán Off'])}<br><span class="tiny">Chuẩn ${fmtMoney(b.aov)}</span>`,
+    r.weatherNote,
+    `<b>${actionPrimary(r)}</b>`,
+    `${safeText(r.learnObj.who)}<br><span class="tiny">${safeText(r.learnObj.what)}</span>`,
+    statusBadge(r.status)
+  ]}));
+  let scale=[...rows].filter(r=>operatingGroup(r)==='Nhân rộng').slice(0,3);
+  let improve=[...rows].sort(operatingSort).filter(r=>operatingGroup(r)!=='Nhân rộng').slice(0,3);
+  summary('storeSummary',
+    `<ul>${scale.map(r=>{let b=r.bm[infoOf(r['CỬA HÀNG']).size]||{};return `<li><b>${safeText(r['CỬA HÀNG'])}</b>: đang đạt chuẩn nhóm ở Traffic ${num(r['PSD Traffic AI']).toFixed(1)}/${num(b.traffic).toFixed(1)}, CVR ${pp(r['CVR AI'])}/${pp(b.cvr)}, AOV ${fmtMoney(r['AOV bán Off'])}/${fmtMoney(b.aov)}.</li>`}).join('')||'<li>Chưa có CH đủ điều kiện nhân rộng rõ ràng.</li>'}</ul>`,
+    `<ul>${improve.map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: nút thắt chính <b>${actionPrimary(r)}</b>; ${driverReason(r,auditDrivers(r))||'cần kiểm tra lại so với chuẩn nhóm'}.</li>`).join('')}</ul>`,
+    `<ul>${improve.map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d);return `<li><b>${r.info.owner}</b> - ${safeText(r['CỬA HÀNG'])}: ${d} ${kv.fmt(kv.actual)}${kv.unit} → ${kv.fmt(kv.target)}${kv.unit} trong 7 ngày.</li>`}).join('')}</ul>`
+  );
+  detailStore.innerHTML=rows.map(r=>`<option value="${safeText(r['CỬA HÀNG'])}">${safeText(r['CỬA HÀNG'])}</option>`).join('');
+  detailStore.onchange=()=>renderStoreDetail(rows.find(r=>r['CỬA HÀNG']===detailStore.value));
+  renderStoreDetail(rows[0]);
+}
+
+function renderCGTV(){
+  if(!cgtvData.length){cgtvTable.innerHTML='';cgtvSummary.innerHTML='';cgtvCards.innerHTML='<div class="empty">Chưa có dữ liệu CGTV.</div>';return}
+  let rows=cgtvRows();
+  const minOrders=100;
+  const clamp=(v,min=0,max=1)=>Math.max(min,Math.min(max,v));
+  const aovScore=r=>clamp((r.aov-850000)/650000);              // 850k -> 0, 1.5tr -> 1
+  const oneScore=r=>clamp((0.42-r.one)/0.17);                 // 1SP càng thấp càng tốt: 42% -> 0, 25% -> 1
+  const accScore=r=>clamp(r.acc/0.28);                        // phụ kiện target 28%
+  const soocScore=r=>clamp(r.sooc/0.30);                      // sooc target 30%
+  const skillScore=r=>oneScore(r)*40 + aovScore(r)*30 + accScore(r)*20 + soocScore(r)*10;
+  const eligible=rows.filter(r=>r.orders>=minOrders);
+  const rank=[...(eligible.length?eligible:rows)].sort((a,b)=>skillScore(b)-skillScore(a)||b.rev-a.rev||b.orders-a.orders);
+  const performance=[...rows].sort((a,b)=>b.rev-a.rev||b.orders-a.orders);
+  const coach=[...rows].sort((a,b)=>{
+    const gapA=(a.one>.32?(a.one-.32)*4:0)+(a.acc<.22?(.22-a.acc)*3:0)+(a.sooc<.22?(.22-a.sooc)*3:0)+(a.aov<900000?(900000-a.aov)/900000:0);
+    const gapB=(b.one>.32?(b.one-.32)*4:0)+(b.acc<.22?(.22-b.acc)*3:0)+(b.sooc<.22?(.22-b.sooc)*3:0)+(b.aov<900000?(900000-b.aov)/900000:0);
+    return gapB-gapA || b.orders-a.orders;
+  }).slice(0,5);
+  const staffCell=r=>`<div class="store-col">${safeText(cleanStaff(r['Tên nhân viên']))}<br><span class="tiny">${safeText(r['Mã NV']||r['Mã nhân viên']||'')}</span></div>`;
+  const storeCell=r=>`<span class="status neutral">${safeText(r['CH'])}</span>`;
+  const oneSpCell=r=>pctMetric(r.one,.30,.40,true);
+  const accCell=r=>pctMetric(r.acc,.25,.18,false);
+  const soocCell=r=>pctMetric(r.sooc,.25,.18,false);
+  const coachingText=r=>r.one>.32?`Giảm 1SP ${pp(r.one)} → 32%`:(r.acc<.22?`Nâng phụ kiện ${pp(r.acc)} → 22%`:(r.sooc<.22?`Nâng Sooc ${pp(r.sooc)} → 22%`:(r.aov<900000?`Nâng AOV ${fmtMoney(r.aov)} → 900k`:'Theo dõi nâng cấp')));
+  table('cgtvTable',['Rank','CGTV','CH','Đơn','Doanh thu','AOV','1SP','Phụ kiện','Sooc','Coaching'],rank.slice(0,30).map((r,i)=>[
+    '#'+(i+1),
+    staffCell(r),
+    storeCell(r),
+    `<span class="metric neutral">${r.orders.toFixed(0)}</span>`,
+    `<b>${fmtMoney(r.rev)}</b>`,
+    moneyMetric(r.aov,1100000,900000),
+    oneSpCell(r),
+    accCell(r),
+    soocCell(r),
+    coachingText(r)
+  ]));
+  let top5=rank.slice(0,5);
+  let perfTop=performance.slice(0,3);
+  summary('cgtvSummary',
+    `<ul>${top5.slice(0,3).map(r=>`<li><b>${safeText(cleanStaff(r['Tên nhân viên']))}</b> - <b>${safeText(r['CH'])}</b>: Sales Skill nổi bật nhờ AOV ${fmtMoney(r.aov)}, 1SP ${pp(r.one)}, phụ kiện ${pp(r.acc)}, Sooc ${pp(r.sooc)}.</li>`).join('')}</ul>`,
+    `<ul>${coach.slice(0,3).map(r=>`<li><b>${safeText(cleanStaff(r['Tên nhân viên']))}</b> - <b>${safeText(r['CH'])}</b>: ${coachingText(r)}.</li>`).join('')}</ul>`,
+    `<ul>${perfTop.map(r=>`<li><b>${safeText(cleanStaff(r['Tên nhân viên']))}</b> - <b>${safeText(r['CH'])}</b>: Top Sales Performance theo doanh thu ${fmtMoney(r.rev)} và ${r.orders.toFixed(0)} đơn.</li>`).join('')}</ul>`
+  );
+  let talent={}; top5.forEach(r=>{talent[r['CH']] = (talent[r['CH']]||0)+1});
+  cgtvCards.innerHTML=
+    `<div class="card"><h3>Top 5 Sales Skill</h3>${top5.map((r,i)=>`<div class="callout good"><b>#${i+1} ${safeText(cleanStaff(r['Tên nhân viên']))}</b><br><span class="status neutral">${safeText(r['CH'])}</span><br><span class="tiny">Skill theo 1SP/AOV/Phụ kiện/Sooc · Đơn ${r.orders.toFixed(0)} · AOV ${fmtMoney(r.aov)} · 1SP ${pp(r.one)} · Phụ kiện ${pp(r.acc)} · Sooc ${pp(r.sooc)}</span></div>`).join('')}</div>`+
+    `<div class="card"><h3>Top Sales Performance</h3>${perfTop.concat(performance.slice(3,5)).map((r,i)=>`<div class="callout good"><b>#${i+1} ${safeText(cleanStaff(r['Tên nhân viên']))}</b><br><span class="status neutral">${safeText(r['CH'])}</span><br><span class="tiny">Doanh thu ${fmtMoney(r.rev)} · Đơn ${r.orders.toFixed(0)} · AOV ${fmtMoney(r.aov)}</span></div>`).join('')}</div>`+
+    `<div class="card"><h3>Coaching Priority</h3>${coach.map(r=>`<div class="callout bad"><b>${safeText(cleanStaff(r['Tên nhân viên']))}</b><br><span class="status neutral">${safeText(r['CH'])}</span><br><span class="tiny">${coachingText(r)} · Phụ kiện ${pp(r.acc)} · Sooc ${pp(r.sooc)}</span></div>`).join('')}</div>`+
+    `<div class="card"><h3>Best Practice</h3>${top5.map(r=>`<div class="callout warn"><b>${safeText(cleanStaff(r['Tên nhân viên']))}</b><br><span class="status neutral">${safeText(r['CH'])}</span><br><span class="tiny">Học gì: kỹ thuật tăng AOV/giảm 1SP và gợi ý combo. Nâng cấp tiếp: phụ kiện hoặc Sooc theo driver còn yếu.</span></div>`).join('')}</div>`+
+    `<div class="card" style="grid-column:1/-1"><h3>Talent Distribution</h3>${Object.keys(talent).map(ch=>`<div class="callout good"><b>${safeText(ch)}</b>: ${talent[ch]} người trong Top 5 Sales Skill.</div>`).join('')||'<div class="empty">Chưa đủ dữ liệu phân bố nhân sự.</div>'}</div>`;
+}
+
+function renderRisk(rows,gap,forecast){
+  table('riskTable',['CH','Gap','Business Risk','Weather Risk','Driver','Note / Lưu ý'],rows.map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d);let note=d==='Duy trì'?'Giữ nhịp, không đưa vào hành động ưu tiên':`${d}: ${kv.fmt(kv.actual)}${kv.unit} → ${kv.fmt(kv.target)}${kv.unit}`;return [
+    `<div class="store-col">${safeText(r['CỬA HÀNG'])}</div>`,
+    fmtMoney(r.gap),
+    statusBadge(r.status),
+    statusBadge({key:weatherKey(r.weather),txt:r.weather.risk}),
+    `<b>${d}</b>`,
+    note
+  ]}));
+  let sorted=[...rows].sort(operatingSort);
+  let riskRows=sorted.filter(r=>operatingGroup(r)!=='Nhân rộng');
+  let forecastRows=[...rows].sort((a,b)=>b.gap-a.gap);
+  let forecastHtml=`<div class="card" style="grid-column:1/-1"><h3>Forecast Center</h3><div class="table-wrap"><table><thead><tr><th>CH</th><th>Hiện tại</th><th>Forecast EOM</th><th>Target</th><th>Gap cuối tháng</th><th>Khả năng</th></tr></thead><tbody>${forecastRows.map(r=>{let f=forecastValue(r),target=num(r['Target DT Tháng']),remain=Math.max(target-f,0);return `<tr><td><div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">${r.sizeRank}</span></div></td><td>${fmtMoney(r['Doanh thu'])}</td><td><b>${fmtMoney(f)}</b></td><td>${fmtMoney(target)}</td><td>${remain>0?'-'+fmtMoney(remain):'Đạt / vượt'}</td><td>${probabilityBadge(forecastProbability(r))}</td></tr>`}).join('')}</tbody></table></div></div>`;
+  let actionHtml=`<div class="card" style="grid-column:1/-1"><h3>Forecast Actions</h3><div class="table-wrap"><table><thead><tr><th>CH</th><th>Driver cần nâng</th><th>Hiện tại → Mục tiêu</th><th>Impact dự kiến</th><th>Gap còn lại sau cải thiện</th><th>Hành động chính</th></tr></thead><tbody>${riskRows.slice(0,5).map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d),imp=forecastActionImpact(r),remain=Math.max(r.gap-imp,0);return `<tr><td><div class="store-col">${safeText(r['CỬA HÀNG'])}<br><span class="tiny">Owner ${r.info.owner}</span></div></td><td><b>${d}</b></td><td>${kv.fmt(kv.actual)}${kv.unit} → ${kv.fmt(kv.target)}${kv.unit}</td><td><b>${fmtMoney(imp)}</b></td><td>${remain>0?fmtMoney(remain):'Có thể bù Gap'}</td><td>${actionDetailText(d,r)}</td></tr>`}).join('')}</tbody></table></div></div>`;
+  summary('riskSummary',
+    `<ul>${forecastRows.filter(r=>forecastProbability(r)==='Cao').slice(0,3).map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: Forecast có khả năng đạt cao nếu giữ nhịp hiện tại.</li>`).join('')||'<li>Chưa có cửa hàng chắc chắn đạt target cuối tháng.</li>'}</ul>`,
+    `<ul>${riskRows.slice(0,3).map(r=>`<li><b>${safeText(r['CỬA HÀNG'])}</b>: rủi ro nằm ở <b>${actionPrimary(r)}</b>, Gap ${fmtMoney(r.gap)}, Weather ${r.weather.risk}.</li>`).join('')}</ul>`,
+    `<ul>${riskRows.slice(0,3).map(r=>{let d=actionPrimary(r),kv=driverKeyValue(r,d);return `<li><b>${r.info.owner}</b>: ${d} ${kv.fmt(kv.actual)}${kv.unit} → ${kv.fmt(kv.target)}${kv.unit}; review sau 7 ngày.</li>`}).join('')}</ul>`
+  );
+  forecastCards.innerHTML = forecastHtml + actionHtml;
+  renderWeather();
+}
+// ===== END V6.5 FINAL HOTFIX OVERRIDES =====
+
+
+
+// ===== V6.7 RC FINAL OVERRIDES: Campaign from KEY_DRIVERS + Weather Intelligence V2 =====
+const WEATHER_PEAK_HOURS=[17,18,19,20,21];
+const WEATHER_STORE_TRAFFIC_PROFILE={8:.04,9:.05,10:.06,11:.06,12:.07,13:.07,14:.08,15:.09,16:.10,17:.12,18:.13,19:.13,20:.12,21:.08};
+function weatherCodeText(code){code=Number(code)||0;if([0].includes(code))return 'Nắng';if([1,2].includes(code))return 'Ít mây';if([3].includes(code))return 'Nhiều mây';if([45,48].includes(code))return 'Sương mù';if([51,53,55,56,57].includes(code))return 'Mưa phùn';if([61,63,65,66,67,80,81,82].includes(code))return code>=65||code>=81?'Mưa lớn':'Mưa';if([95,96,99].includes(code))return 'Dông';return 'Theo dõi';}
+function weatherIcon(text){text=String(text||'');if(text.includes('Dông'))return '⛈️';if(text.includes('Mưa lớn'))return '🌧️';if(text.includes('Mưa'))return '🌦️';if(text.includes('Nắng'))return '☀️';if(text.includes('mây')||text.includes('Mây'))return '⛅';return '🌤️';}
+function weekdayVN(dateStr){let d=new Date(dateStr+'T00:00:00+07:00');let w=['CN','T2','T3','T4','T5','T6','T7'][d.getDay()];return w;}
+function hourFromTime(t){let m=String(t||'').match(/T(\d{2})/);return m?Number(m[1]):0}
+function trafficWeightForHour(h){return WEATHER_STORE_TRAFFIC_PROFILE[h]||0.03}
+function buildHourlySegments(hourly){
+  let times=hourly.time||[], codes=hourly.weather_code||[], pops=hourly.precipitation_probability||[], prec=hourly.precipitation||hourly.rain||[], winds=hourly.wind_speed_10m||[];
+  let rows=times.map((t,i)=>{let h=hourFromTime(t), date=String(t).slice(0,10), code=Number(codes[i]||0), pop=Number(pops[i]||0), mm=Number(prec[i]||0), wind=Number(winds[i]||0), weather=weatherCodeText(code);let rainy=pop>=45||mm>=.2||weather.includes('Mưa')||weather.includes('Dông');let severe=pop>=70||mm>=2||weather.includes('Mưa lớn')||weather.includes('Dông');let peak=WEATHER_PEAK_HOURS.includes(h);let trafficWeight=trafficWeightForHour(h);let impactPoints=(rainy?1:0)*(severe?2:1)*(peak?2.2:1)*trafficWeight*100;return {time:t,date,hour:h,weather,pop,mm,wind,rainy,severe,peak,trafficWeight,impactPoints};});
+  return rows;
+}
+function summarizeWeatherRows(rows){
+  if(!rows||!rows.length)return {risk:'Chưa có',summary:'Chưa có dữ liệu hourly',rain_days:0,max_pop:0,impact:'Chưa có',impact_score:0,segments:[],today:[],action:'Theo dõi thời tiết thủ công.'};
+  let byDate={};rows.forEach(r=>(byDate[r.date] ||= []).push(r));
+  let dates=Object.keys(byDate).sort();
+  let rainDays=dates.filter(d=>byDate[d].some(x=>x.rainy)).length;
+  let maxPop=Math.max(0,...rows.map(r=>r.pop));
+  let today=byDate[dates[0]]||[];
+  let score=today.reduce((s,r)=>s+r.impactPoints,0);
+  let peakRain=today.filter(r=>r.rainy&&r.peak);
+  let risk=score>=65?'Cao':score>=28?'Trung bình':today.some(r=>r.rainy)?'Thấp':'Thấp';
+  let impact=risk;
+  let segments=[];
+  let cur=null;
+  today.forEach(r=>{let label=`${weatherIcon(r.weather)} ${r.weather}`; if(!cur||cur.label!==label){if(cur)segments.push(cur);cur={label,start:r.hour,end:r.hour+1,maxPop:r.pop,maxMm:r.mm,peak:r.peak,score:r.impactPoints};}else{cur.end=r.hour+1;cur.maxPop=Math.max(cur.maxPop,r.pop);cur.maxMm=Math.max(cur.maxMm,r.mm);cur.peak=cur.peak||r.peak;cur.score+=r.impactPoints;}}); if(cur)segments.push(cur);
+  let worst=segments.slice().sort((a,b)=>b.score-a.score)[0];
+  let summary = worst ? `${worst.label} ${String(worst.start).padStart(2,'0')}h-${String(worst.end).padStart(2,'0')}h, POP tối đa ${Math.round(worst.maxPop)}%. ${worst.peak?'Trùng giờ vàng bán hàng.':'Không trùng giờ vàng chính.'}` : 'Thời tiết thuận lợi.';
+  let action = risk==='Cao'?'Ưu tiên Zalo KH cũ, gọi khách giữ hàng, hẹn khách trước/sau khung mưa, livestream hoặc chốt đơn từ xa.':risk==='Trung bình'?'Theo dõi khung mưa, dồn hoạt động kéo khách vào giờ tạnh, chuẩn bị kịch bản gọi khách cũ.':'Có thể đẩy walk-in/local activation; nếu nắng nóng, tập trung Polo/UV/nhóm sản phẩm dễ mua.';
+  return {risk,summary,rain_days:rainDays,max_pop:maxPop,impact,impact_score:score,segments,today,peak_rain_hours:peakRain.length,action};
+}
+async function fetchOpenMeteoWeather(){
+  let stores=Object.entries(STORE_COORDS); let results=[];
+  await Promise.all(stores.map(async ([store,c])=>{
+    let url=`https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}&hourly=weather_code,precipitation_probability,precipitation,wind_speed_10m&daily=weather_code,precipitation_sum,precipitation_probability_max&timezone=Asia%2FBangkok&forecast_days=7`;
+    let res=await fetchWithTimeout(url,{cache:'no-store'},3500); if(!res.ok)throw new Error('Open-Meteo lỗi '+res.status);
+    let j=await res.json(); let hourlyRows=buildHourlySegments(j.hourly||{}); let w=summarizeWeatherRows(hourlyRows);
+    results.push({store,city:c.city,source:'Open-Meteo',risk:w.risk,impact:w.impact,impact_score:w.impact_score,summary:w.summary,rain_days:w.rain_days,max_pop:Math.round(w.max_pop),segments:w.segments,today:w.today,peak_rain_hours:w.peak_rain_hours,action:w.action,daily:j.daily,hourly:j.hourly});
+  }));
+  results.sort((a,b)=>Object.keys(STORE_COORDS).indexOf(a.store)-Object.keys(STORE_COORDS).indexOf(b.store));
+  return {updated_at:new Date().toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}),source:'Open-Meteo API · Hourly Weather · Weather Intelligence V2',mode:'auto-hourly',stores:results};
+}
+function weatherOf(name){let w=weatherMap()[String(name||'').trim().toUpperCase()];return w||{risk:'Chưa có',impact:'Chưa có',summary:'Chưa cập nhật thời tiết theo giờ',rain_days:0,max_pop:0,segments:[],today:[],action:'Theo dõi thời tiết thủ công.'}}
+function weatherAdjustedNote(r,root,w){if(!w||w.risk==='Chưa có')return 'Thiếu dữ liệu weather';let seg=(w.segments||[]).sort((a,b)=>b.score-a.score)[0];let time=seg?`${String(seg.start).padStart(2,'0')}h-${String(seg.end).padStart(2,'0')}h`:'';if(root==='Traffic'){if(w.risk==='Cao')return `Weather Risk cao ${time}: có thể ảnh hưởng Traffic, cần chuyển sang khách cũ/Zalo.`;if(w.risk==='Trung bình')return `Weather Risk TB ${time}: theo dõi traffic theo giờ và dồn kéo khách giờ tạnh.`;return `Weather thấp: Traffic yếu cần kiểm tra vận hành/local activation.`}return `Weather ${w.risk}${time?' · '+time:''}: là risk layer, không đổi trạng thái KPI.`}
+function weatherAction(root,w){if(root!=='Traffic')return actionForRoot(root);if(w.risk==='Cao')return 'Mưa trùng giờ bán: gọi khách cũ, Zalo/Facebook địa phương, hẹn khách trước/sau giờ mưa, livestream/chốt đơn từ xa.';if(w.risk==='Trung bình')return 'Mưa rải rác: dồn kéo walk-in vào khung tạnh, chuẩn bị danh sách khách giữ hàng/khách cũ.';if(w.risk==='Thấp')return 'Thời tiết thuận lợi: tăng kéo walk-in, phát voucher địa phương, hoạt động trước cửa hàng.';return 'Chưa có dữ liệu thời tiết: theo dõi Traffic theo giờ và dùng kịch bản kéo khách chủ động.'}
+function priorityScore(r){let ht=rate(r['%HT DT tháng']),target=num(r['Target DT Tháng']),gap=Math.max(num(r['Target DT Tháng'])-num(r['Doanh thu']),0);let rootBonus=(r.root==='Traffic'?50000000:(r.root==='CVR'?35000000:(r.root==='AOV'?30000000:(r.root==='DT/Traffic'?25000000:10000000))));let statusBonus=r.status.key==='alarm'?70000000:(r.status.key==='watch'?35000000:0);let htPenalty=Math.max(0,.75-ht)*target*1.6;let bottleneckBonus=(r.bottlenecks||[]).filter(x=>x.name!=='Doanh thu').length*18000000;return gap+htPenalty+rootBonus+statusBonus+bottleneckBonus+(r.impactNum||0)*.35}
+function campaignActive(){return (campaignConfig&&campaignConfig.length&&campaignKpi&&campaignKpi.length)}
+function activeCampaign(){return (campaignConfig||[]).find(r=>String(r.status||r.active||'').toLowerCase().includes('active')) || (campaignConfig||[])[0] || {}}
+function campaignId(){return activeCampaign().campaign_id || activeCampaign().id || ''}
+function kpisForLevel(level){let id=campaignId();return (campaignKpi||[]).filter(k=>(!id||String(k.campaign_id||'')===String(id)) && String(k.level||'STORE').toUpperCase()===level)}
+function rowLabel(r,level){return level==='CGTV'?cleanStaff(r['Tên nhân viên']||r['CGTV']||r['Nhân viên']):r['CỬA HÀNG']}
+function rowStore(r,level){return level==='CGTV'?(r['CH']||r['CỬA HÀNG']||'-'):(r['CỬA HÀNG']||'-')}
+function fmtByCampaign(v,fmt){fmt=String(fmt||'').toLowerCase();if(fmt.includes('percent'))return pp(v);if(fmt.includes('currency')||fmt.includes('money'))return fmtMoney(v);if(fmt.includes('number'))return Math.round(num(v)).toLocaleString('vi-VN');return String(v||v===0? v : '-')}
+function campaignCell(r,k){let code=k.kpi_code||k.header||k.kpi_name; if(!(code in r))return '<span class="status neutral">Thiếu header</span>';return `<b>${fmtByCampaign(r[code],k.format)}</b>`}
+function campaignAgg(rows,k){let code=k.kpi_code||k.header||k.kpi_name, agg=String(k.aggregate||'avg').toLowerCase();let avail=rows.filter(r=>code in r && String(r[code]).trim()!=='');if(!avail.length)return null;return agg==='sum'?sum(avail,code):avg(avail,code)}
+function detectCampaignContribution(storeRows,storeKpis){let totalTraffic=sum(storeRows,'PSD Traffic AI'), totalOrders=sum(storeRows,'Số đơn')||sum(storeRows,'SL Đơn')||0, totalRev=sum(storeRows,'Doanh thu');let out=[];storeKpis.forEach(k=>{let code=k.kpi_code||'', name=String(k.kpi_name||code).toLowerCase(), fmt=String(k.format||'').toLowerCase();let isRate=fmt.includes('percent');if(!(storeRows[0]&&code in storeRows[0])||!isRate)return;let rows=storeRows.filter(r=>String(r[code]||'').trim()!=='');if(name.includes('khách')||code.toLowerCase().includes('khach')||code.toLowerCase().includes('traffic')){let val=rows.reduce((s,r)=>s+num(r['PSD Traffic AI'])*rate(r[code]),0);out.push(['Traffic / Khách Campaign ước tính',Math.round(val).toLocaleString('vi-VN'),totalTraffic?pp(val/totalTraffic):'-',safeText(k.kpi_name||code)]);}else if(name.includes('đơn')||name.includes('voucher')||code.toLowerCase().includes('don')||code.toLowerCase().includes('voucher')){let orderBase=totalOrders?rows.reduce((s,r)=>s+(num(r['Số đơn'])||num(r['SL Đơn'])||0)*rate(r[code]),0):0;out.push(['Đơn Campaign ước tính',orderBase?Math.round(orderBase).toLocaleString('vi-VN'):'Chưa có cột Số đơn',orderBase&&totalOrders?pp(orderBase/totalOrders):'-',safeText(k.kpi_name||code)]);}});out.push(['Doanh thu Campaign','Chỉ hiển thị nếu BI có header doanh thu campaign','-','Không dùng file campaign data riêng']);return out;}
+function campaignHasValue(r,k){let code=k.kpi_code||k.header||k.kpi_name;return (code in r) && String(r[code]??'').trim()!=='' && !String(r[code]??'').includes('Thiếu header')}
+function campaignCoverageRows(rows,kpis){return rows.filter(r=>kpis.some(k=>campaignHasValue(r,k))).length}
+function campaignStats(rows,k){let code=k.kpi_code||k.header||k.kpi_name;let vals=rows.filter(r=>code in r && String(r[code]??'').trim()!=='').map(r=>rate(r[code])).filter(v=>isFinite(v));if(!vals.length)return null;let min=Math.min(...vals),max=Math.max(...vals);return {min,max,range:max-min,avg:vals.reduce((a,b)=>a+b,0)/vals.length}}
+function renderCampaign(){
+  let status=document.getElementById('campaignStatus'); if(!status)return;
+  let cfg=activeCampaign(), id=campaignId();
+  let storeK=kpisForLevel('STORE'), cgtvK=kpisForLevel('CGTV');
+  let overview=document.getElementById('campaignOverview'), storeTbl=document.getElementById('campaignKpiTable'), cgtvTbl=document.getElementById('campaignBeforeAfterTable'), sumBox=document.getElementById('campaignSummary');
+  if(!campaignActive()){
+    status.innerHTML='<h3>Campaign Impact</h3><div class="callout warn"><b>Chưa có dữ liệu Campaign.</b><br><span class="tiny">Dashboard vẫn chạy bình thường. Hằng tháng cập nhật data/campaign_config.csv và data/campaign_kpi.csv. Hằng ngày chỉ cập nhật KEY_DRIVERS_STORE.csv + KEY_DRIVERS_CGTV.csv.</span></div>';
+    if(overview)overview.innerHTML=''; if(storeTbl)storeTbl.innerHTML=''; if(cgtvTbl)cgtvTbl.innerHTML=''; if(sumBox)sumBox.innerHTML=''; return;
+  }
+  let scope=storeFilter.value, storeRows=scope==='ALL'?storeData:storeData.filter(r=>r['CỬA HÀNG']===scope), cgtvRowsLevel=scope==='ALL'?cgtvData:cgtvData.filter(r=>String(r['CH']||'')===scope);
+  let cname=cfg.campaign_name||cfg.name||id||'Campaign';
+  status.innerHTML=`<h3>${safeText(cname)}</h3><div class="callout good"><b>Campaign Impact đang bật.</b><br><span class="tiny">Giai đoạn: ${safeText(cfg.start_date||'-')} → ${safeText(cfg.end_date||'-')} · Phạm vi: ${scope==='ALL'?'Toàn vùng':safeText(scope)} · Dashboard chỉ hiển thị dữ liệu KPI campaign, không xếp loại hiệu quả.</span></div>`;
+  let storeCoverage=campaignCoverageRows(storeRows,storeK), cgtvCoverage=campaignCoverageRows(cgtvRowsLevel,cgtvK);
+  let storeTotal=storeRows.length||0, cgtvTotal=cgtvRowsLevel.length||0;
+  if(overview) overview.innerHTML=`<div class="kpi-card neutral"><div class="kpi-label">Campaign</div><div class="kpi-value" style="font-size:26px">${safeText(cname)}</div><div class="kpi-sub">${safeText(cfg.status||'active')}</div></div><div class="kpi-card neutral"><div class="kpi-label">Store Impact</div><div class="kpi-value">${storeCoverage}/${storeTotal}</div><div class="kpi-sub">Cửa hàng có dữ liệu</div></div><div class="kpi-card neutral"><div class="kpi-label">CGTV Impact</div><div class="kpi-value">${cgtvCoverage}</div><div class="kpi-sub">Nhân sự có dữ liệu${cgtvTotal?' / '+cgtvTotal:''}</div></div><div class="kpi-card top"><div class="kpi-label">Vận hành</div><div class="kpi-value" style="font-size:24px">Daily + Monthly</div><div class="kpi-sub">Daily: data KD · Monthly: config/KPI/traffic</div></div>`;
+  if(storeK.length){table('campaignKpiTable',['Cửa hàng',...storeK.map(k=>safeText(k.kpi_name||k.kpi_code))],storeRows.map(r=>[`<div class="store-col">${safeText(r['CỬA HÀNG'])}</div>`,...storeK.map(k=>campaignCell(r,k))]));}else if(storeTbl) storeTbl.innerHTML='<tbody><tr><td><div class="empty">Chưa khai báo KPI level=STORE trong campaign_kpi.csv.</div></td></tr></tbody>';
+  if(cgtvK.length){let sorted=cgtvRowsLevel.slice().sort((a,b)=>num(b['Doanh thu'])-num(a['Doanh thu'])).slice(0,60);table('campaignBeforeAfterTable',['CGTV','CH',...cgtvK.map(k=>safeText(k.kpi_name||k.kpi_code))],sorted.map(r=>[`<div class="store-col">${safeText(cleanStaff(r['Tên nhân viên']))}<br><span class="tiny">${safeText(staffCode(r['Tên nhân viên']))}</span></div>`,safeText(r['CH']),...cgtvK.map(k=>campaignCell(r,k))]));}else if(cgtvTbl) cgtvTbl.innerHTML='<tbody><tr><td><div class="empty">Chưa khai báo KPI level=CGTV trong campaign_kpi.csv.</div></td></tr></tbody>';
+  let allK=[...storeK.map(k=>({...k,level:'Store',rows:storeRows})),...cgtvK.map(k=>({...k,level:'CGTV',rows:cgtvRowsLevel}))];
+  let dist=allK.map(k=>{let st=campaignStats(k.rows,k);return st?`<li><b>${safeText(k.kpi_name||k.kpi_code)}</b> (${k.level}): dao động ${pp(st.min)} → ${pp(st.max)} · độ lệch ${pp(st.range)}.</li>`:`<li><b>${safeText(k.kpi_name||k.kpi_code)}</b> (${k.level}): chưa đủ dữ liệu hoặc thiếu header.</li>`}).join('');
+  if(sumBox) summary('campaignSummary',`<ul><li>${storeCoverage}/${storeTotal} cửa hàng có dữ liệu Campaign.</li><li>${cgtvCoverage}${cgtvTotal?' / '+cgtvTotal:''} nhân sự có dữ liệu Campaign.</li></ul>`,`<ul>${dist||'<li>Chưa có KPI để tính mức độ phân hóa.</li>'}</ul>`,`<ul><li>Tiếp tục theo dõi KPI Campaign đến hết chương trình.</li><li>Đối chiếu cùng doanh thu, Traffic, CVR, AOV, UPT ở các tab khác khi OM tổng kết.</li></ul>`);
+}
+
+function renderWeatherToday(rows){let list=rows.filter(r=>weatherKey(r.weather)!=='neutral').sort((a,b)=>(b.weather.impact_score||0)-(a.weather.impact_score||0)).slice(0,6);weatherToday.innerHTML=list.map(r=>{let seg=(r.weather.segments||[]).sort((a,b)=>b.score-a.score)[0];let time=seg?`${String(seg.start).padStart(2,'0')}h-${String(seg.end).padStart(2,'0')}h`:'';return `<div class="callout ${weatherKey(r.weather)==='alarm'?'bad':weatherKey(r.weather)==='watch'?'warn':'good'}"><b>${safeText(r['CỬA HÀNG'])}</b> · ${r.weather.risk}<br><span class="tiny">${safeText(r.weather.summary)}${time?' · '+time:''}</span></div>`}).join('')||'<div class="callout warn">Đang lấy thời tiết theo giờ từ Open-Meteo. Nếu không hiện, kiểm tra kết nối mạng.</div>'}
+function renderWeather(){if(!weatherData){weatherUpdated.innerHTML='';weatherBox.innerHTML='<div class="callout warn">Chưa lấy được thời tiết tự động. Dashboard vẫn chạy bằng KPI core.</div>';return}weatherUpdated.innerHTML=`Cập nhật: <b>${weatherData.updated_at||'-'}</b> · Nguồn: ${weatherData.source||'-'} · Weather là risk layer, không tự đổi trạng thái KPI`;weatherBox.innerHTML=(analysisRows||[]).map(r=>{let w=r.weather||{}, date=(w.today&&w.today[0]&&w.today[0].date)||new Date().toISOString().slice(0,10);let segs=(w.segments||[]).slice(0,5);let rows=segs.map(s=>`<tr><td>${String(s.start).padStart(2,'0')}h-${String(s.end).padStart(2,'0')}h</td><td>${safeText(s.label)}</td><td>${Math.round(s.maxPop||0)}%</td><td>${s.peak?'Giờ vàng':'Thường'}</td></tr>`).join('');return `<div class="card"><h3>${safeText(r['CỬA HÀNG'])}</h3>${statusBadge({key:weatherKey(w),txt:'Weather '+(w.risk||'Chưa có')})}<p class="mini"><b>${weekdayVN(date)} · ${date.split('-').reverse().join('/')}</b><br>${safeText(w.summary||'')}</p><div class="table-wrap"><table style="min-width:520px"><thead><tr><th>Khung giờ</th><th>Thời tiết</th><th>POP</th><th>Ảnh hưởng</th></tr></thead><tbody>${rows||'<tr><td colspan="4">Chưa có hourly weather.</td></tr>'}</tbody></table></div><div class="callout ${weatherKey(w)==='alarm'?'bad':weatherKey(w)==='watch'?'warn':'good'}"><b>Ảnh hưởng:</b> ${safeText(w.risk||'-')}<br><span class="tiny">${safeText(w.action||'Theo dõi thủ công.')}</span></div></div>`}).join('')}
+function forecastValue(r){let m=monthInfo(),rev=num(r['Doanh thu']);let runRate=rev/m.day*m.days;let wk=weatherKey(r.weather), weatherFactor=wk==='alarm'?.96:(wk==='watch'?.985:1);let campFactor=campaignActive()?1.01:1;return runRate*.70 + (runRate*weatherFactor)*.20 + (runRate*campFactor)*.10}
+async function loadAll(){try{[storeData,cgtvData,campaignConfig,campaignKpi]=await Promise.all([readCSV('./data/KEY_DRIVERS_STORE.csv'),readCSV('./data/KEY_DRIVERS_CGTV.csv'),optionalReadCSV('./data/campaign_config.csv'),optionalReadCSV('./data/campaign_kpi.csv')]);campaignData=[];weatherData=await loadWeatherData();storeFilter.innerHTML='<option value="ALL">Toàn vùng</option>'+storeData.map(r=>`<option>${safeText(r['CỬA HÀNG'])}</option>`).join('');storeFilter.onchange=render;let issues=validateData(storeData,cgtvData);dataStatus.textContent=`Đã đọc ${storeData.length} CH · ${cgtvData.length} CGTV · V6.7 RC`;if(issues.length){dataWarning.style.display='block';dataWarning.innerHTML='⚠️ '+issues.join('<br>')}else{dataWarning.style.display='none'}render()}catch(e){dataStatus.textContent='Chưa có dữ liệu';dataWarning.style.display='block';dataWarning.innerHTML='⚠️ Không đọc được CSV. Kiểm tra thư mục <b>data</b> và chạy lại bằng RUN_DASHBOARD.bat.<br><span class="tiny">Chi tiết lỗi: '+safeText(e.message||e)+'</span>';}}
+// ===== END V6.7 RC FINAL OVERRIDES =====
+
+
+
+// ===== V6.7 RC QA FIX: Traffic Profile integration for Weather Intelligence =====
+async function optionalReadText(path){
+  try{let r=await fetch(path+'?v='+Date.now()); if(!r.ok)return ''; return await r.text();}
+  catch(e){return '';}
+}
+function normStoreKey(v){
+  return String(v||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/^\s*[A-Z0-9]+\s*-\s*/,'').replace(/^YODY\s+/,'')
+    .replace(/\s+/g,' ').trim();
+}
+function parseTrafficProfile(text){
+  // V6.7 FINAL FIX: đọc trực tiếp form block traffic_profile.csv
+  // Format hỗ trợ:
+  // [Tên block cửa hàng]
+  // Giờ,Thứ 2,Thứ 3,Thứ 4,Thứ 5,Thứ 6,Thứ 7,Chủ nhật,Ghi chú
+  // 8,1.3,1.3,...
+  text=String(text||'').replace(/^\uFEFF/,'');
+  let lines=text.split(/\r?\n/).filter(x=>String(x||'').trim());
+  let stores={}, current=null, headerMode=false;
+
+  function splitLine(line){
+    let delimiter=detectDelimiter(line||'');
+    let out=[], cell='', q=false;
+    for(let i=0;i<String(line).length;i++){
+      let c=line[i], n=line[i+1];
+      if(c==='"'&&q&&n==='"'){cell+='"';i++}
+      else if(c==='"'){q=!q}
+      else if(c===delimiter&&!q){out.push(cell.trim());cell=''}
+      else cell+=c;
+    }
+    out.push(cell.trim());
+    return out;
+  }
+  function cleanCell(v){return String(v||'').replace(/^\uFEFF/,'').trim();}
+  function isStoreLine(first,cells){
+    let f=cleanCell(first);
+    if(!f)return false;
+    if(/^BÁO CÁO/i.test(f)||/^BAO CAO/i.test(f)||/^Form/i.test(f)||/^Giờ$/i.test(f)||/^Gio$/i.test(f))return false;
+    if(/^\d+$/.test(f))return false;
+    return f.toUpperCase().includes('YODY');
+  }
+
+  lines.forEach(line=>{
+    let cells=splitLine(line).map(cleanCell);
+    let first=cells[0]||'';
+
+    if(isStoreLine(first,cells)){
+      current={raw:first,name:first.replace(/^\s*[A-Z0-9]+\s*-\s*/,'').trim(),hours:{},total:0,valid:false};
+      stores[normStoreKey(current.name)]=current;
+      headerMode=false;
+      return;
+    }
+
+    if(current && (/^Giờ$/i.test(first)||/^Gio$/i.test(first))){
+      headerMode=true;
+      return;
+    }
+
+    let h=Number(first);
+    if(current && headerMode && Number.isFinite(h) && h>=0 && h<=23){
+      let vals=[];
+      // Cột B-H tương ứng Thứ 2 -> Chủ nhật trong form chuẩn.
+      for(let i=1;i<=7;i++){
+        let v=num(cells[i]);
+        if(v>0)vals.push(v);
+      }
+      let avgVal=vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:0;
+      current.hours[h]=avgVal;
+      current.total+=avgVal;
+      if(avgVal>0)current.valid=true;
+    }
+  });
+
+  Object.values(stores).forEach(st=>{
+    let vals=Object.entries(st.hours).map(([h,v])=>({h:Number(h),v:Number(v)||0}));
+    let total=vals.reduce((a,b)=>a+b.v,0);
+    st.total=total;
+    st.weights={};
+    vals.forEach(x=>st.weights[x.h]=total?x.v/total:0);
+    // Lấy 4 giờ có traffic cao nhất làm giờ traffic cao.
+    st.peakHours=vals.filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,4).map(x=>x.h);
+  });
+
+  return {stores,valid:Object.values(stores).some(s=>s.valid),count:Object.values(stores).filter(s=>s.valid).length};
+}
+function trafficProfileForStore(store){
+  let key=normStoreKey(store);
+  let stores=(trafficProfile&&trafficProfile.stores)||{};
+  if(stores[key])return stores[key];
+  let hit=Object.keys(stores).find(k=>key.includes(k)||k.includes(key));
+  return hit?stores[hit]:null;
+}
+function trafficWeightForStoreHour(store,h){
+  let prof=trafficProfileForStore(store);
+  if(prof && prof.valid && prof.weights && prof.weights[h]>0)return prof.weights[h];
+  return WEATHER_STORE_TRAFFIC_PROFILE[h]||0.03;
+}
+function isPeakHourForStore(store,h){
+  let prof=trafficProfileForStore(store);
+  if(prof && prof.valid && prof.peakHours && prof.peakHours.length)return prof.peakHours.includes(h);
+  return WEATHER_PEAK_HOURS.includes(h);
+}
+function buildHourlySegments(hourly,storeName){
+  let times=hourly.time||[], codes=hourly.weather_code||[], pops=hourly.precipitation_probability||[], prec=hourly.precipitation||hourly.rain||[], winds=hourly.wind_speed_10m||[];
+  let rows=times.map((t,i)=>{
+    let h=hourFromTime(t), date=String(t).slice(0,10), code=Number(codes[i]||0), pop=Number(pops[i]||0), mm=Number(prec[i]||0), wind=Number(winds[i]||0), weather=weatherCodeText(code);
+    let rainy=pop>=45||mm>=.2||weather.includes('Mưa')||weather.includes('Dông');
+    let severe=pop>=70||mm>=2||weather.includes('Mưa lớn')||weather.includes('Dông');
+    let peak=isPeakHourForStore(storeName,h), trafficWeight=trafficWeightForStoreHour(storeName,h);
+    let impactPoints=(rainy?1:0)*(severe?2:1)*(peak?2.2:1)*trafficWeight*100;
+    return {time:t,date,hour:h,weather,pop,mm,wind,rainy,severe,peak,trafficWeight,impactPoints};
+  });
+  return rows;
+}
+function summarizeWeatherRows(rows,storeName){
+  if(!rows||!rows.length)return {risk:'Chưa có',summary:'Chưa có dữ liệu hourly',rain_days:0,max_pop:0,impact:'Chưa có',impact_score:0,segments:[],today:[],action:'Theo dõi thời tiết thủ công.'};
+  let byDate={}; rows.forEach(r=>(byDate[r.date] ||= []).push(r));
+  let dates=Object.keys(byDate).sort(), today=byDate[dates[0]]||[];
+  let rainDays=dates.filter(d=>byDate[d].some(x=>x.rainy)).length;
+  let maxPop=Math.max(0,...rows.map(r=>r.pop));
+  let score=today.reduce((s,r)=>s+r.impactPoints,0);
+  let risk=score>=65?'Cao':score>=28?'Trung bình':today.some(r=>r.rainy)?'Thấp':'Thấp';
+  let segments=[],cur=null;
+  today.forEach(r=>{
+    let label=`${weatherIcon(r.weather)} ${r.weather}`;
+    if(!cur||cur.label!==label){ if(cur)segments.push(cur); cur={label,start:r.hour,end:r.hour+1,maxPop:r.pop,maxMm:r.mm,peak:r.peak,score:r.impactPoints}; }
+    else{cur.end=r.hour+1; cur.maxPop=Math.max(cur.maxPop,r.pop); cur.maxMm=Math.max(cur.maxMm,r.mm); cur.peak=cur.peak||r.peak; cur.score+=r.impactPoints;}
+  }); if(cur)segments.push(cur);
+  let worst=segments.slice().sort((a,b)=>b.score-a.score)[0];
+  let prof=trafficProfileForStore(storeName);
+  let peakTxt=(prof&&prof.valid&&prof.peakHours&&prof.peakHours.length)?`Peak theo traffic profile: ${prof.peakHours.slice().sort((a,b)=>a-b).map(h=>String(h).padStart(2,'0')+'h').join(', ')}.`:'Peak mặc định: 17h-21h.';
+  let summary=worst?`${worst.label} ${String(worst.start).padStart(2,'0')}h-${String(worst.end).padStart(2,'0')}h, XS mưa tối đa ${Math.round(worst.maxPop)}%. ${worst.peak?'Trùng giờ traffic cao.':'Không trùng giờ traffic cao chính.'} ${peakTxt}`:`Thời tiết thuận lợi. ${peakTxt}`;
+  let action=risk==='Cao'?'Ưu tiên Zalo KH cũ, gọi khách giữ hàng, hẹn khách trước/sau khung mưa, livestream hoặc chốt đơn từ xa.':risk==='Trung bình'?'Theo dõi khung mưa, dồn hoạt động kéo khách vào giờ tạnh, chuẩn bị kịch bản gọi khách cũ.':'Có thể đẩy walk-in/local activation; nếu nắng nóng, tập trung Polo/UV/nhóm sản phẩm dễ mua.';
+  return {risk,summary,rain_days:rainDays,max_pop:maxPop,impact:risk,impact_score:score,segments,today,peak_rain_hours:today.filter(r=>r.rainy&&r.peak).length,action,traffic_profile_valid:!!(prof&&prof.valid)};
+}
+async function fetchOpenMeteoWeather(){
+  let stores=Object.entries(STORE_COORDS), results=[];
+  await Promise.all(stores.map(async ([store,c])=>{
+    let url=`https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}&hourly=weather_code,precipitation_probability,precipitation,wind_speed_10m&daily=weather_code,precipitation_sum,precipitation_probability_max&timezone=Asia%2FBangkok&forecast_days=7`;
+    let res=await fetchWithTimeout(url,{cache:'no-store'},3500); if(!res.ok)throw new Error('Open-Meteo lỗi '+res.status);
+    let j=await res.json(); let hourlyRows=buildHourlySegments(j.hourly||{},store); let w=summarizeWeatherRows(hourlyRows,store);
+    results.push({store,city:c.city,source:'Open-Meteo',risk:w.risk,impact:w.impact,impact_score:w.impact_score,summary:w.summary,rain_days:w.rain_days,max_pop:Math.round(w.max_pop),segments:w.segments,today:w.today,peak_rain_hours:w.peak_rain_hours,action:w.action,traffic_profile_valid:w.traffic_profile_valid,daily:j.daily,hourly:j.hourly});
+  }));
+  results.sort((a,b)=>Object.keys(STORE_COORDS).indexOf(a.store)-Object.keys(STORE_COORDS).indexOf(b.store));
+  return {updated_at:new Date().toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}),source:'Open-Meteo API · Hourly + traffic_profile.csv',mode:'auto-hourly-traffic-profile',stores:results};
+}
+async function loadAll(){try{
+  [storeData,cgtvData,campaignConfig,campaignKpi,trafficProfileRaw]=await Promise.all([readCSV('./data/KEY_DRIVERS_STORE.csv'),readCSV('./data/KEY_DRIVERS_CGTV.csv'),optionalReadCSV('./data/campaign_config.csv'),optionalReadCSV('./data/campaign_kpi.csv'),optionalReadText('./data/traffic_profile.csv')]);
+  trafficProfile=trafficProfileRaw?parseTrafficProfile(trafficProfileRaw):{stores:{},valid:false};
+  campaignData=[]; weatherData=await loadWeatherData();
+  storeFilter.innerHTML='<option value="ALL">Toàn vùng</option>'+storeData.map(r=>`<option>${safeText(r['CỬA HÀNG'])}</option>`).join(''); storeFilter.onchange=render;
+  let issues=validateData(storeData,cgtvData); dataStatus.textContent=`Đã đọc ${storeData.length} CH · ${cgtvData.length} CGTV · V6.7 RC`;
+  if(issues.length){dataWarning.style.display='block';dataWarning.innerHTML='⚠️ '+issues.join('<br>')}else{dataWarning.style.display='none'}
+  render();
+}catch(e){dataStatus.textContent='Chưa có dữ liệu';dataWarning.style.display='block';dataWarning.innerHTML='⚠️ Không đọc được CSV. Kiểm tra thư mục <b>data</b> và chạy lại bằng RUN_DASHBOARD.bat.<br><span class="tiny">Chi tiết lỗi: '+safeText(e.message||e)+'</span>';}}
+// ===== END V6.7 RC QA FIX =====
+
+initTabs();loadAll();
+</script>
+</body>
+</html>
